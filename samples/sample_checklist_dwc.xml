@@ -6,8 +6,8 @@
             <ENA_CHECKLIST_ID>ERC000011</ENA_CHECKLIST_ID>
         </IDENTIFIERS>
         <DESCRIPTOR>
-            <LABEL>DWC sample checklist</LABEL>
-            <NAME>DWC sample checklist</NAME>
+            <LABEL>Darwin Core (DwC) sample checklist</LABEL>
+            <NAME>DwC sample checklist</NAME>
             <DESCRIPTION>Minimum information required for Darwin Core (DwC) samples</DESCRIPTION>
             <AUTHORITY>COPO</AUTHORITY>
             <FIELD_GROUP restrictionType="Any number or none of the fields">

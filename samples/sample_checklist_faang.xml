@@ -6,7 +6,7 @@
         <ENA_CHECKLIST_ID>ERC000011</ENA_CHECKLIST_ID>
     </IDENTIFIERS>
     <DESCRIPTOR>
-        <LABEL>FAANG sample checklist</LABEL>
+        <LABEL>Functional Annotation of Animal Genomes (FAANG) sample checklist</LABEL>
         <NAME>FAANG sample checklist</NAME>
         <DESCRIPTION>Minimum information required for Functional Annotation of Animal Genomes (FAANG) samples</DESCRIPTION>
         <AUTHORITY>COPO</AUTHORITY>
