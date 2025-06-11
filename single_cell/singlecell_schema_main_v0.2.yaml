@@ -69,7 +69,7 @@ classes:
         range: string
         multivalued: false
         inlined: false
-      d:
+      bibliographicCitation:
         identifier: false
         required: true
         description: A citation for the study resource, following a standard format.
@@ -77,7 +77,7 @@ classes:
         - value: Doe J.
         - value: et al. (2024). Single Cell Transcriptomic Analysis of Human Liver
             Cells. Journal of Cellular Biology.
-        slot_uri: dcterms:d
+        slot_uri: dcterms:bibliographicCitation
         domain: Study
         range: string
         multivalued: false
@@ -113,6 +113,21 @@ classes:
         slot_uri: ei:technology
         domain: Study
         range: string
+        multivalued: false
+        inlined: false
+      licence:
+        identifier: false
+        required: false
+        description: Specifies the terms under which the data associated with the
+          study can be used, shared, or reused. It informs users how they may legally
+          reference, distribute, or build upon the study. Common licenses include
+          Creative Commons (e.g., CC BY 4.0), which require attribution to the original
+          authors when the data is cited or reused.
+        examples:
+        - value: MIT License
+        slot_uri: ei:licence
+        domain: Study
+        range: enum
         multivalued: false
         inlined: false
       project_name:
@@ -312,7 +327,8 @@ classes:
       study_id:
         identifier: false
         required: true
-        description: A unique alphanumeric identifier for the  study if refering to
+        description: A unique alphanumeric identifier for the  study if referring
+          to
         examples:
         - value: A7F9B3X2
         slot_uri: ei:study_id
@@ -323,1287 +339,13 @@ classes:
       sample_id:
         identifier: true
         required: true
-        description: A unique alphanumeric reference or identifier for the study.
+        description: A unique alphanumeric reference or identifier for the sample.
+          This field must provide a consistent, unambiguous way to identify the sample
+          within and across datasets. It can be a name, code, or accession-like format,
+          as long as it remains unique.
         examples:
-        - value: study123
+        - value: sample123
         slot_uri: ei:sample_id
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      scientificName:
-        identifier: false
-        required: false
-        description: The full scientific name of the species studied.
-        examples:
-        - value: Arenicola marina
-        slot_uri: dwc:scientificName
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      tissue:
-        identifier: false
-        required: false
-        description: The type of tissue sampled for the study.
-        examples:
-        - value: Leaf
-        slot_uri: ei:tissue
-        domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      preparations:
-        identifier: false
-        required: false
-        description: A brief description of how the sample was preserved.
-        examples:
-        - value: Fresh
-        slot_uri: dwc:preparations
-        domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      eventDate:
-        identifier: false
-        required: false
-        description: The date when the sample was collected with year, month and day
-          specified in the format, YYYY-MM-DD.
-        examples:
-        - value: '2024-09-20'
-        slot_uri: dwc:eventDate
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      decimalLatitude:
-        identifier: false
-        required: false
-        description: The geographic latitude where the specimen or sample was taken
-          in decimal degrees, between -90 and 90. Locations should be specified to
-          a minimum of 3 decimal places and a maximum of 8 decimal places.
-        examples:
-        - value: '52.2053'
-        slot_uri: dwc:decimalLatitude
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      decimalLongitude:
-        identifier: false
-        required: false
-        description: The longitude of the sample collection site, in decimal degrees.
-        examples:
-        - value: '0.1218'
-        slot_uri: dwc:decimalLongitude
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      medium:
-        identifier: false
-        required: false
-        description: The material or physical carrier of the resource.
-        examples:
-        - value: Tissue culture
-        slot_uri: dcterms:medium
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      accession_number:
-        identifier: false
-        required: false
-        description: A unique alphanumeric reference or identifier assigned to the
-          sample in the study related to NCBI Taxonomy.
-        examples:
-        - value: accession123
-        slot_uri: ei:accession_number
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      class:
-        identifier: false
-        required: false
-        description: The full scientific name of the class in which the dwc:Taxon
-          is classified.
-        examples:
-        - value: Hepaticopsida
-        slot_uri: dwc:class
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      collectionCode:
-        identifier: false
-        required: false
-        description: The name, acronym, code, or initialism identifying the collection
-          or data set from which the record was derived.
-        examples:
-        - value: Hildebrandt
-        slot_uri: dwc:collectionCode
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      collectionID:
-        identifier: false
-        required: false
-        description: An identifier for the collection or dataset from which the record
-          was derived.
-        examples:
-        - value: https://www.gbif.org/grscicoll/collection/fbd3ed74-5a21-4e01-b86a-33d36f032d9c
-        slot_uri: dwc:collectionID
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      continent:
-        identifier: false
-        required: false
-        description: The name of the continent in which the dcterms:Location occurs.
-        examples:
-        - value: Europe
-        slot_uri: dwc:continent
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      countryCode:
-        identifier: false
-        required: false
-        description: The standard code for the country in which the dcterms:Location
-          occurs.
-        examples:
-        - value: AR
-        slot_uri: dwc:countryCode
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      county:
-        identifier: false
-        required: false
-        description: The full, unabbreviated name of the next smaller administrative
-          region than stateProvince (county, shire, department, etc.) in which the
-          dcterms:Location occurs.
-        examples:
-        - value: Los Lagos
-        slot_uri: dwc:county
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      cultivarEpithet:
-        identifier: false
-        required: false
-        description: Part of the name of a cultivar, cultivar group or grex that follows
-          the dwc:scientificName.
-        examples:
-        - value: King Edward
-        slot_uri: dwc:cultivarEpithet
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      datasetID:
-        identifier: false
-        required: false
-        description: An identifier for the set of data. May be a global unique identifier
-          or an identifier specific to a collection or institution.
-        examples:
-        - value: b15d4952-7d20-46f1-8a3e-556a512b04c5
-        slot_uri: dwc:datasetID
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      datasetName:
-        identifier: false
-        required: false
-        description: The name identifying the data set from which the record was derived.
-        examples:
-        - value: Grinnell Resurvey Mammals
-        slot_uri: dwc:datasetName
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      dateIdentified:
-        identifier: false
-        required: false
-        description: The date on which the subject was determined as representing
-          the dwc:Taxon.
-        examples:
-        - value: 1963-03-08T14:07
-        slot_uri: dwc:dateIdentified
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      disposition:
-        identifier: false
-        required: false
-        description: The current state of a specimen with respect to the collection
-          identified in dwc:collectionCode or dwc:collectionID.
-        examples:
-        - value: Used up
-        slot_uri: dwc:disposition
-        domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      infraspecificEpithet:
-        identifier: false
-        required: false
-        description: The name of the lowest or terminal infraspecific epithet of the
-          dwc:scientificName, excluding any rank designation.
-        examples:
-        - value: concolor
-        slot_uri: dwc:infraspecificEpithet
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      institutionID:
-        identifier: false
-        required: false
-        description: An identifier for the institution having custody of the object(s)
-          or information referred to in the record.
-        examples:
-        - value: 'https: //ror.org/015hz7p22'
-        slot_uri: dwc:institutionID
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      island:
-        identifier: false
-        required: false
-        description: The name of the island on or near which the dcterms:Location
-          occurs.
-        examples:
-        - value: Zanzibar
-        slot_uri: dwc:island
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      islandGroup:
-        identifier: false
-        required: false
-        description: The name of the island group in which the dcterms:Location occurs.
-        examples:
-        - value: Alexander Archipelago
-        slot_uri: dwc:islandGroup
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      kingdom:
-        identifier: false
-        required: false
-        description: The full scientific name of the kingdom in which the dwc:Taxon
-          is classified.
-        examples:
-        - value: Animalia
-        slot_uri: dwc:kingdom
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      language:
-        identifier: false
-        required: false
-        description: A language of the resource.
-        examples:
-        - value: en
-        slot_uri: dcterms:language
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      locality:
-        identifier: false
-        required: false
-        description: The specific description of the place.
-        examples:
-        - value: Queets Rainforest
-        - value: Olympic National Park
-        slot_uri: dwc:locality
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      locationAccordingTo:
-        identifier: false
-        required: false
-        description: Information about the source of this dcterms:Location information.
-          Could be a publication (gazetteer), institution, or team of individuals.
-        examples:
-        - value: Getty Thesaurus of Geographic Names
-        slot_uri: dwc:locationAccordingTo
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      locationID:
-        identifier: false
-        required: false
-        description: An identifier for the set of dcterms:Location information. May
-          be a global unique identifier or an identifier specific to the data set.
-        examples:
-        - value: https://opencontext.org/subjects/768A875F-E205-4D0B-DE55-BAB7598D0FD1
-        slot_uri: dwc:locationID
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      locationRemarks:
-        identifier: false
-        required: false
-        description: Comments or notes about the dcterms:Location.
-        examples:
-        - value: under water since 2005
-        slot_uri: dwc:locationRemarks
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      materialEntityRemarks:
-        identifier: false
-        required: false
-        description: Comments or notes about the dwc:MaterialEntity instance.
-        examples:
-        - value: found in association with charred remains
-        slot_uri: dwc:materialEntityRemarks
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      maximumDepthInMeters:
-        identifier: false
-        required: false
-        description: The greater depth of a range of depth below the local surface,
-          in metres.
-        examples:
-        - value: '200'
-        slot_uri: dwc:maximumDepthInMeters
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      maximumDistanceAboveSurfaceInMeters:
-        identifier: false
-        required: false
-        description: The greater distance in a range of distance from a reference
-          surface in the vertical direction, in meters. Use positive values for locations
-          above the surface, negative values for locations below. If depth measures
-          are given, the reference surface is the location given by the depth, otherwise
-          the reference surface is the location given by the elevation.
-        examples:
-        - value: '-1.5'
-        slot_uri: dwc:maximumDistanceAboveSurfaceInMeters
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      maximumElevationInMeters:
-        identifier: false
-        required: false
-        description: The upper limit of the range of elevation (altitude, usually
-          above sea level), in metres.
-        examples:
-        - value: '1236'
-        slot_uri: dwc:maximumElevationInMeters
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      minimumDepthInMeters:
-        identifier: false
-        required: false
-        description: The lesser depth of a range of depth below the local surface,
-          in metres.
-        examples:
-        - value: '100'
-        slot_uri: dwc:minimumDepthInMeters
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      minimumDistanceAboveSurfaceInMeters:
-        identifier: false
-        required: false
-        description: The lesser distance in a range of distance from a reference surface
-          in the vertical direction, in meters. Use positive values for locations
-          above the surface, negative values for locations below. If depth measures
-          are given, the reference surface is the location given by the depth, otherwise
-          the reference surface is the location given by the elevation.
-        examples:
-        - value: '4.2'
-        slot_uri: dwc:minimumDistanceAboveSurfaceInMeters
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      minimumElevationInMeters:
-        identifier: false
-        required: false
-        description: The lower limit of the range of elevation (altitude, usually
-          above sea level), in metres
-        examples:
-        - value: '-100'
-        slot_uri: dwc:minimumElevationInMeters
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      organismID:
-        identifier: false
-        required: false
-        description: An identifier for the dwc:Organism instance (as opposed to a
-          particular digital record of the dwc:Organism). May be a globally unique
-          identifier or an identifier specific to the data set.
-        examples:
-        - value: organism123
-        slot_uri: dwc:organismID
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      organismQuantity:
-        identifier: false
-        required: false
-        description: A number or enumeration value for the quantity of dwc:Organisms.
-        examples:
-        - value: '27'
-        slot_uri: dwc:organismQuantity
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      organismQuantityType:
-        identifier: false
-        required: false
-        description: The type of quantification system used for the quantity of organisms.
-        examples:
-        - value: '12.5'
-        slot_uri: dwc:organismQuantityType
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      organismRemarks:
-        identifier: false
-        required: false
-        description: Comments or notes about the dwc:Organism instance.
-        examples:
-        - value: One of a litter of six
-        slot_uri: dwc:organismRemarks
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      phylum:
-        identifier: false
-        required: false
-        description: The full scientific name of the phylum or division in which the
-          dwc:Taxon is classified.
-        examples:
-        - value: Chordata
-        slot_uri: dwc:phylum
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      recordedBy:
-        identifier: false
-        required: false
-        description: A person, group, or organization responsible for recording the
-          original dwc:Occurrence.
-        examples:
-        - value: "Jos\xE9 E. Crespo"
-        slot_uri: dwc:recordedBy
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      recordedByID:
-        identifier: false
-        required: false
-        description: A list (concatenated and separated) of the globally unique identifier
-          for the person, people, groups, or organizations responsible for recording
-          the original dwc:Occurrence.
-        examples:
-        - value: https://orcid.org/0000-0002-1825-0097 | https://orcid.org/0000-0002-1825-0098
-        slot_uri: dwc:recordedByID
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      reproductiveCondition:
-        identifier: false
-        required: false
-        description: The reproductive condition of the biological individual(s) represented
-          in the dwc:Occurrence.
-        examples:
-        - value: Fruit-bearing
-        slot_uri: dwc:reproductiveCondition
-        domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      sampleSizeUnit:
-        identifier: false
-        required: false
-        description: The unit of measurement of the size (time duration, length, area,
-          or volume) of a sample in a sampling dwc:Event.
-        examples:
-        - value: minute
-        slot_uri: dwc:sampleSizeUnit
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      sampleSizeValue:
-        identifier: false
-        required: false
-        description: A numeric value for a measurement of the size (time duration,
-          length, area, or volume) of a sample in a sampling dwc:Event.
-        examples:
-        - value: '5'
-        slot_uri: dwc:sampleSizeValue
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      samplingEffort:
-        identifier: false
-        required: false
-        description: The amount of effort expended during a dwc:Event.
-        examples:
-        - value: 40 trap-nights
-        slot_uri: dwc:samplingEffort
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      samplingProtocol:
-        identifier: false
-        required: false
-        description: The methods or protocols used during a dwc:Event, denoted by
-          an IRI.
-        examples:
-        - value: UV light trap
-        slot_uri: dwc:samplingProtocol
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      specificEpithet:
-        identifier: false
-        required: false
-        description: The name of the first or species epithet of the dwc:scientificName.
-        examples:
-        - value: concolor
-        slot_uri: dwc:specificEpithet
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      subfamily:
-        identifier: false
-        required: false
-        description: The full scientific name of the subfamily in which the dwc:Taxon
-          is classified.
-        examples:
-        - value: Periptyctinae
-        slot_uri: dwc:subfamily
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      subgenus:
-        identifier: false
-        required: false
-        description: The full scientific name of the subgenus in which the dwc:Taxon
-          is classified. Values should include the genus to avoid homonym confusion.
-        examples:
-        - value: Strobus
-        slot_uri: dwc:subgenus
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      taxonConceptID:
-        identifier: false
-        required: false
-        description: An identifier for the taxonomic concept to which the record refers
-          - not for the nomenclatural details of a dwc:Taxon.
-        examples:
-        - value: 8fa58e08-08de-4ac1-b69c-1235340b7001
-        slot_uri: dwc:taxonConceptID
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      taxonRemarks:
-        identifier: false
-        required: false
-        description: Comments or notes about the taxon or name.
-        examples:
-        - value: this name is a misspelling in common use
-        slot_uri: dwc:taxonRemarks
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      taxonomicStatus:
-        identifier: false
-        required: false
-        description: The status of the use of the dwc:scientificName as a label for
-          a taxon. Requires taxonomic opinion to define the scope of a dwc:Taxon.
-          Rules of priority then are used to define the taxonomic status of the nomenclature
-          contained in that scope, combined with the experts opinion. It must be linked
-          to a specific taxonomic reference that defines the concept.
-        examples:
-        - value: misapplied
-        slot_uri: dwc:taxonomicStatus
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      type:
-        identifier: false
-        required: false
-        description: The nature or genre of the resource.
-        examples:
-        - value: StillImage
-        slot_uri: dcterms:type
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      verbatimCoordinateSystem:
-        identifier: false
-        required: false
-        description: The spatial coordinate system for the dwc:verbatimLatitude and
-          dwc:verbatimLongitude or the dwc:verbatimCoordinates of the dcterms:Location.
-        examples:
-        - value: decimal degrees
-        slot_uri: dwc:verbatimCoordinateSystem
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      verbatimCoordinates:
-        identifier: false
-        required: false
-        description: The verbatim original spatial coordinates of the dcterms:Location.
-          The coordinate ellipsoid, geodeticDatum, or full Spatial Reference System
-          (SRS) for these coordinates should be stored in dwc:verbatimSRS and the
-          coordinate system should be stored in dwc:verbatimCoordinateSystem.
-        examples:
-        - value: 41 05 54S 121 05 34W
-        slot_uri: dwc:verbatimCoordinates
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      verbatimDepth:
-        identifier: false
-        required: false
-        description: The original description of the depth below the local surface.
-        examples:
-        - value: 100-200
-        slot_uri: dwc:verbatimDepth
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      verbatimElevation:
-        identifier: false
-        required: false
-        description: The original description of the elevation (altitude, usually
-          above sea level) of the Location.
-        examples:
-        - value: 100-200
-        slot_uri: dwc:verbatimElevation
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      verbatimEventDate:
-        identifier: false
-        required: false
-        description: The verbatim original representation of the date and time information
-          for a dwc:Event.
-        examples:
-        - value: spring 1910
-        slot_uri: dwc:verbatimEventDate
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      verbatimIdentification:
-        identifier: false
-        required: false
-        description: A string representing the taxonomic identification as it appeared
-          in the original record.
-        examples:
-        - value: Peromyscus sp.
-        slot_uri: dwc:verbatimIdentification
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      verbatimLabel:
-        identifier: false
-        required: false
-        description: "The content of this term should include no embellishments, prefixes,\
-          \ headers or other additions made to the text. Abbreviations must not be\
-          \ expanded and supposed misspellings must not be corrected. Lines or breakpoints\
-          \ between blocks of text that could be verified by seeing the original labels\
-          \ or images of them may be used. Examples of material entities include preserved\
-          \ specimens, fossil specimens, and material samples. Best practice is to\
-          \ use UTF-8 for all characters. Best practice is to add comment \u201A\xC4\
-          \xFAverbatimLabel derived from human transcription\u201A\xC4\xF9 in dwc:occurrenceRemarks."
-        examples:
-        - value: "Monotoma longicollis 4 \u2642 Det TC McElrath 2018"
-        slot_uri: dwc:verbatimLabel
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      verbatimLatitude:
-        identifier: false
-        required: false
-        description: The verbatim original latitude of the dcterms:Location. The coordinate
-          ellipsoid, geodeticDatum, or full Spatial Reference System (SRS) for these
-          coordinates should be stored in dwc:verbatimSRS and the coordinate system
-          should be stored in dwc:verbatimCoordinateSystem.
-        examples:
-        - value: 41 05 54.03S
-        slot_uri: dwc:verbatimLatitude
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      verbatimLocality:
-        identifier: false
-        required: false
-        description: The original textual description of the place.
-        examples:
-        - value: 25 km NNE Bariloche por R. Nac. 237
-        slot_uri: dwc:verbatimLocality
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      verbatimLongitude:
-        identifier: false
-        required: false
-        description: The verbatim original longitude of the dcterms:Location. The
-          coordinate ellipsoid, geodeticDatum, or full Spatial Reference System (SRS)
-          for these coordinates should be stored in dwc:verbatimSRS and the coordinate
-          system should be stored in dwc:verbatimCoordinateSystem.
-        examples:
-        - value: 121d 10' 34" W
-        slot_uri: dwc:verbatimLongitude
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      verbatimSRS:
-        identifier: false
-        required: false
-        description: The ellipsoid, geodetic datum, or spatial reference system (SRS)
-          upon which coordinates given in dwc:verbatimLatitude and dwc:verbatimLongitude,
-          or dwc:verbatimCoordinates are based.
-        examples:
-        - value: WGS84
-        slot_uri: dwc:verbatimSRS
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      verbatimTaxonRank:
-        identifier: false
-        required: false
-        description: The taxonomic rank of the most specific name in the dwc:scientificName
-          as it appears in the original record.
-        examples:
-        - value: prole
-        slot_uri: dwc:verbatimTaxonRank
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      vernacularName:
-        identifier: false
-        required: false
-        description: A common or vernacular name.
-        examples:
-        - value: Andean Condor
-        slot_uri: dwc:vernacularName
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      verticalDatum:
-        identifier: false
-        required: false
-        description: The vertical datum used as the reference upon which the values
-          in the elevation terms are based.
-        examples:
-        - value: EGM84
-        slot_uri: dwc:verticalDatum
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      vitality:
-        identifier: false
-        required: false
-        description: An indication of whether a dwc:Organism was alive or dead at
-          the time of collection or observation.
-        examples:
-        - value: alive
-        slot_uri: dwc:vitality
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      waterBody:
-        identifier: false
-        required: false
-        description: The name of the water body in which the dcterms:Location occurs.
-        examples:
-        - value: Indian Ocean
-        slot_uri: dwc:waterBody
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      materialSampleID:
-        identifier: false
-        required: false
-        description: An identifier for the dwc:MaterialSample (as opposed to a particular
-          digital record of the dwc:MaterialSample). In the absence of a persistent
-          global unique identifier, construct one from a combination of identifiers
-          in the record that will most closely make the dwc:materialSampleID globally
-          unique.
-        examples:
-        - value: 06809dc5-f143-459a-be1a-6f03e63fc083
-        slot_uri: dwc:materialSampleID
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      specific_host:
-        identifier: false
-        required: false
-        description: Report the host's taxonomic name and/or NCBI taxonomy ID
-        examples:
-        - value: Arenicola marina
-        slot_uri: mixs:specific_host
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      organism:
-        identifier: false
-        required: false
-        description: The full scientific name of the species studied.
-        examples:
-        - value: Arenicola marina
-        slot_uri: ei:organism
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      microb_start_taxID:
-        identifier: false
-        required: false
-        description: An identifier of the strain of the organism, if applicable.
-        examples:
-        - value: XY [en:42]
-        slot_uri: mixs:microb_start_taxID
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      collection_date:
-        identifier: false
-        required: false
-        description: 'The time of sampling, either as an instance (single point in
-          time) or interval. In case no exact time is available, the date/time can
-          be right truncated i.e. all of these are valid times: 2008-01-23T19:23:10+00:00;
-          2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008; Except: 2008-01; 2008 all
-          are ISO8601 compliant'
-        examples:
-        - value: 2024-09-20T21:12
-        slot_uri: mixs:collection_date
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      lat_lon:
-        identifier: false
-        required: false
-        description: The geographical origin of the sample as defined by latitude
-          and longitude. The values should be reported in decimal degrees, limited
-          to 8 decimal points, and in WGS84 system
-        examples:
-        - value: 50.123 6.24512
-        slot_uri: mixs:lat_lon
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      env_broad_scale:
-        identifier: false
-        required: false
-        description: 'Report the major environmental system the sample or specimen
-          came from. The system(s) identified should have a coarse spatial grain,
-          to provide the general environmental context of where the sampling was done
-          (e.g. in the desert or a rainforest). Reference: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'
-        examples:
-        - value: Urban
-        slot_uri: mixs:env_broad_scale
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      env_local_scale:
-        identifier: false
-        required: false
-        description: Report the environmental material(s) immediately surrounding
-          the sample or specimen at the time of sampling.
-        examples:
-        - value: Laboratory
-        slot_uri: mixs:env_local_scale
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      env_medium:
-        identifier: false
-        required: false
-        description: Report the environmental material(s) immediately surrounding
-          the sample or specimen at the time of sampling.
-        examples:
-        - value: Tissue culture
-        slot_uri: mixs:env_medium
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      geo_loc_name:
-        identifier: false
-        required: false
-        description: The geographical origin of the sample as defined by the country
-          or sea name followed by specific region name. Country or sea names should
-          be chosen from the INSDC country list (http://insdc.org/country.html), or
-          the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)
-        examples:
-        - value: 'USA: Maryland'
-        - value: Bethesda
-        slot_uri: mixs:geo_loc_name
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      depth:
-        identifier: false
-        required: false
-        description: The vertical distance below local surface. For sediment or soil
-          samples depth is measured from sediment or soil surface, respectively. Depth
-          can be reported as an interval for subsurface samples
-        examples:
-        - value: '200'
-        slot_uri: mixs:depth
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      elev:
-        identifier: false
-        required: false
-        description: Elevation of the sampling site is its height above a fixed reference
-          point, most commonly the mean sea level. Elevation is mainly used when referring
-          to points on the earth's surface, while altitude is used for points above
-          the surface, such as an aircraft in flight or a spacecraft in orbit
-        examples:
-        - value: '1236'
-        slot_uri: mixs:elev
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      samp_size:
-        identifier: false
-        required: false
-        description: The total amount or size (volume (ml), mass (g) or area (m2)
-          ) of sample collected
-        examples:
-        - value: 5 litre
-        slot_uri: mixs:samp_size
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      samp_name:
-        identifier: false
-        required: false
-        description: ''
-        examples:
-        - value: ISDsoil1
-        slot_uri: mixs:samp_name
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      lib_screen:
-        identifier: false
-        required: false
-        description: Specific enrichment or screening methods applied before and/or
-          after creating libraries
-        examples:
-        - value: Enriched
-        slot_uri: mixs:lib_screen
-        domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      ref_db:
-        identifier: false
-        required: false
-        description: List of database(s) used for ORF annotation, along with version
-          number and reference to website or publication
-        examples:
-        - value: pVOGs;5;http://dmk-brain.ecn.uiowa.edu/pVOGs/ Grazziotin et al. 2017
-            doi:10.1093/nar/gkw9
-        slot_uri: mixs:ref_db
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      temp:
-        identifier: false
-        required: false
-        description: Temperature of the sample at the time of sampling in degree celsius
-        examples:
-        - value: '25'
-        slot_uri: mixs:temp
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      isol_growth_condt:
-        identifier: false
-        required: false
-        description: Publication reference in the form of pubmed ID (pmid), digital
-          object identifier (doi) or url for isolation and growth condition specifications
-          of the organism/material
-        examples:
-        - value: doi:10.1016/j.syapm.2018.01.009
-        slot_uri: mixs:isol_growth_condt
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      alt:
-        identifier: false
-        required: false
-        description: Heights of objects such as airplanes, space shuttles, rockets,
-          atmospheric balloons and heights of places such as atmospheric layers and
-          clouds in metres (m). It is used to measure the height of an object which
-          is above the earth's surface. In this context, the altitude measurement
-          is the vertical distance between the earth's surface above sea level and
-          the sampled position in the air
-        examples:
-        - value: '100'
-        slot_uri: mixs:alt
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      source_mat_id:
-        identifier: false
-        required: false
-        description: A unique identifier assigned to a material sample used for extracting
-          nucleic acids, and subsequent sequencing. The identifier can refer either
-          to the original material collected or to any derived sub-samples. The INSDC
-          qualifiers /specimen_voucher, /bio_material, or /culture_collection may
-          or may not share the same value as the source_mat_id field.
-        examples:
-        - value: MPI012345
-        slot_uri: mixs:source_mat_id
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      ploidy:
-        identifier: false
-        required: false
-        description: The ploidy level of the genome (e.g. allopolyploid, haploid,
-          diploid, triploid, tetraploid). It has implications for the downstream study
-          of duplicated gene and regions of the genomes (and perhaps for difficulties
-          in assembly)
-        examples:
-        - value: allopolyploidy
-        slot_uri: mixs:ploidy
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      pathogenicity:
-        identifier: false
-        required: false
-        description: To what is the entity pathogenic
-        examples:
-        - value: Animal
-        slot_uri: mixs:pathogenicity
-        domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      propagation:
-        identifier: false
-        required: false
-        description: The type of reproduction from the parent stock. Values for this
-          field is specific to different taxa.
-        examples:
-        - value: lytic
-        slot_uri: mixs:propagation
-        domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      samp_collect_device:
-        identifier: false
-        required: false
-        description: The device used to collect an environmental sample.
-        examples:
-        - value: sampleDevice
-        slot_uri: mixs:samp_collect_device
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      biotic_relationship:
-        identifier: false
-        required: false
-        description: Description of relationship(s) between the subject organism and
-          other organism(s) it is associated with.
-        examples:
-        - value: Free living
-        slot_uri: mixs:biotic_relationship
-        domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      ref_biomaterial:
-        identifier: false
-        required: false
-        description: Primary publication if isolated before genome publication; otherwise,
-          primary genome report
-        examples:
-        - value: doi:10.1016/j.syapm.2018.01.009
-        slot_uri: mixs:ref_biomaterial
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      tax_ident:
-        identifier: false
-        required: false
-        description: The phylogenetic marker(s) used to assign an organism name to
-          the SAG or MAG
-        examples:
-        - value: Other
-        slot_uri: mixs:tax_ident
-        domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      trophic_level:
-        identifier: false
-        required: false
-        description: Trophic levels are the feeding position in a food chain. Microbes
-          can be a range of producers (e.g. chemolithotroph)
-        examples:
-        - value: heterotroph
-        slot_uri: mixs:trophic_level
-        domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      subspecf_gen_lin:
-        identifier: false
-        required: false
-        description: Information about the genetic distinctness of the sequenced organism
-          below the subspecies level, e.g., serovar, serotype, biotype, ecotype, or
-          any relevant genetic typing schemes like Group I plasmid. Subspecies should
-          not be recorded in this term, but in the NCBI taxonomy. Supply both the
-          lineage name and the lineage rank separated by a colon, e.g., biovar:abc123
-        examples:
-        - value: serovar:Newport
-        slot_uri: mixs:subspecf_gen_lin
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      host_disease_stat:
-        identifier: false
-        required: false
-        description: List of diseases with which the host has been diagnosed; can
-          include multiple diagnoses. The value of the field depends on host; for
-          humans the terms should be chosen from the DO (Human Disease Ontology) at
-          https://www.disease-ontology.org, non-human host diseases are free text
-        examples:
-        - value: bacterial esophagitis
-        slot_uri: mixs:host_disease_stat
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      samp_collect_method:
-        identifier: false
-        required: false
-        description: The method employed for collecting the sample
-        examples:
-        - value: Caught with a net
-        slot_uri: mixs:samp_collect_method
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      samp_taxon_id:
-        identifier: false
-        required: false
-        description: NCBI taxon id of the sample. Maybe be a single taxon or mixed
-          taxa sample. Use 'synthetic metagenome for mock community/positive controls,
-          or 'blank sample' for negative controls
-        examples:
-        - value: Gut Metagenome [NCBITaxon:749906]
-        slot_uri: mixs:samp_taxon_id
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      tax_class:
-        identifier: false
-        required: false
-        description: Method used for taxonomic classification, along with reference
-          database used, classification rank, and thresholds used to classify new
-          genomes
-        examples:
-        - value: vConTACT vContact2
-        slot_uri: mixs:tax_class
         domain: Sample
         range: string
         multivalued: false
@@ -1611,299 +353,50 @@ classes:
       scientific_name:
         identifier: false
         required: false
-        description: The full scientific name of the species studied.
+        description: The formal Latin name used to identify the organism from which
+          the sample was derived (e.g. Homo sapiens or Arabidopsis thaliana). This
+          name must accurately correspond to the Taxon ID provided to ensure correct
+          taxonomic classification.
         examples:
-        - value: Arenicola marina
-        slot_uri: tol:scientific_name
+        - value: Salvelinus alpinus
+        slot_uri: ei:scientific_name
         domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      culture_or_strain_id:
-        identifier: false
-        required: false
-        description: "Give the reference ID from the source culture collection, such\
-          \ that the culture accession can be found in the collection\u2019s database.\
-          \ This is only relevant if the sequenced material is derived from a living,\
-          \ culturable, named laboratory strain (e.g., Anopheles coluzzii N\u2019\
-          Gousso strain)."
-        examples:
-        - value: CCAP1119/17
-        slot_uri: tol:culture_or_strain_id
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      tissue_for_barcoding:
-        identifier: false
-        required: false
-        description: The type of tissue sampled for the study.
-        examples:
-        - value: Leaf
-        slot_uri: tol:tissue_for_barcoding
-        domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      preservation_approach:
-        identifier: false
-        required: false
-        description: A brief description of how the sample was preserved.
-        examples:
-        - value: Fresh
-        slot_uri: tol:preservation_approach
-        domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      date_of_collection:
-        identifier: false
-        required: false
-        description: The date when the sample was collected with year, month and day
-          specified in the format, YYYY-MM-DD.
-        examples:
-        - value: '2024-09-20'
-        slot_uri: tol:date_of_collection
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      decimal_latitude:
-        identifier: false
-        required: false
-        description: The geographic latitude where the specimen or sample was taken
-          in decimal degrees, between -90 and 90. Locations should be specified to
-          a minimum of 3 decimal places and a maximum of 8 decimal places.
-        examples:
-        - value: '52.2053'
-        slot_uri: tol:decimal_latitude
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      decimal_longitude:
-        identifier: false
-        required: false
-        description: The longitude of the sample collection site, in decimal degrees.
-        examples:
-        - value: '0.1218'
-        slot_uri: tol:decimal_longitude
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      infraspecific_epithet:
-        identifier: false
-        required: false
-        description: The name of the lowest or terminal infraspecific epithet of the
-          dwc:scientificName, excluding any rank designation.
-        examples:
-        - value: concolor
-        slot_uri: tol:infraspecific_epithet
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      collector_sample_id:
-        identifier: false
-        required: false
-        description: 'Unique name assigned to the sample by the COLLECTOR or COLLECTOR_AFFILIATION.
-          Do not use spaces or special characters, other than hyphens and underscores
-          ("-" and "_") i.e do not use #, !,^*, etc. Free text.'
-        examples:
-        - value: UDUK0000331
-        slot_uri: tol:collector_sample_id
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      description_of_collection_method:
-        identifier: false
-        required: false
-        description: A detailed as possible description of the sample collection methods
-        examples:
-        - value: Caught with fiber net within densely wooded area
-        - value: and immediately placed into the collection container
-        slot_uri: tol:description_of_collection_method
-        domain: Sample
-        range: string
+        range: BIOSAMPLEACCESSION_EXT_FIELD
         multivalued: false
         inlined: false
       taxon_id:
         identifier: false
-        required: false
-        description: A valid NCBI TAXON_ID to the species level ismandatory in order
-          to submit data to public repositories. The species name in themanifest must
-          be identical to that listed in the "current name" box in the T axonomy Browser
-          for that species.
+        required: true
+        description: "A unique identifier (usually from a recognized taxonomy database\
+          \ like NCBI Taxonomy) that corresponds to the organism\u2019s scientific\
+          \ name. It must be accurately matched to the provided scientificName to\
+          \ maintain consistency and traceability in biological records."
         examples:
-        - value: '458489'
-        slot_uri: tol:taxon_id
+        - value: '8036'
+        slot_uri: ei:taxon_id
         domain: Sample
-        range: string
+        range: BIOSAMPLEACCESSION_EXT_FIELD
         multivalued: false
         inlined: false
-      health_status:
-        identifier: false
-        required: false
-        description: Healthy animals should have the term normal, otherwise use the
-          as many disease terms as necessary from EFO.
-        examples:
-        - value: normal
-        slot_uri: faang:health_status
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      sex:
+      biosampleAccession:
         identifier: false
         required: true
-        description: Animal sex, described using any child term of PATO_0000047.
+        description: A unique identifier assigned to a biological sample after it
+          has been submitted to a public database, such as the NCBI BioSample or ENA.
+          It serves as a permanent reference to that specific sample, allowing researchers
+          to retrieve metadata and link it across studies or datasets.
         examples:
-        - value: female
-        slot_uri: faang:sex
+        - value: SAMEA12907823
+        slot_uri: ei:biosampleAccession
         domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      birth_date:
-        identifier: false
-        required: false
-        description: Birth date, in the format YYYY-MM-DD, or YYYY-MM where only the
-          month is known. For embryo samples record 'not applicable'.
-        examples:
-        - value: '2025-01-24 00:00:00'
-        slot_uri: faang:birth_date
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      breed:
-        identifier: false
-        required: false
-        description: Animal breed, described using the FAANG breed description guidelines
-          (http://bit.ly/FAANGbreed). Should be considered mandatory for terrestiral
-          species, for aquatic species record 'not applicable'.
-        examples:
-        - value: Large Black
-        slot_uri: faang:breed
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      specimen_collection_date:
-        identifier: false
-        required: true
-        description: Date at which the specimen was collected.
-        examples:
-        - value: '2024-01-19 00:00:00'
-        slot_uri: faang:specimen_collection_date
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      geographic_location:
-        identifier: false
-        required: true
-        description: The location the sample was collected from with the intention
-          of sequencing, as defined by the country or sea. Country or sea names should
-          be chosen from the INSDC country list https://www.insdc.org/submitting-standards/country-qualifier-vocabulary/
-        examples:
-        - value: Algeria
-        slot_uri: faang:geographic_location
-        domain: Sample
-        range: enum
-        multivalued: false
-        inlined: false
-      animal_age_at_collection:
-        identifier: false
-        required: true
-        description: 'The age of the animal at the time of collection. If the exact
-          age is not known, an estimate is acceptable. The age should be represented
-          in the format: years, weeks, days, with each part being optional and specified
-          in that order (e.g., "2 years 5 weeks 3 days" or "35 days")'
-        examples:
-        - value: 2 years 5 weeks 3 days
-        slot_uri: faang:animal_age_at_collection
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      developmental_stage:
-        identifier: false
-        required: true
-        description: Ontology for Developmental stage, UBERON is preferred to EFO.
-        examples:
-        - value: juvenile stage
-        slot_uri: faang:developmental_stage
-        domain: Sample
-        range: ontology
-        multivalued: false
-        inlined: false
-      organism_part:
-        identifier: false
-        required: true
-        description: Ontology for part of organism specimen from, UBERON is preferred
-          to BTO.
-        examples:
-        - value: neuronal cell body
-        slot_uri: faang:organism_part
-        domain: Sample
-        range: ontology
-        multivalued: false
-        inlined: false
-      specimen_collection_protocol:
-        identifier: false
-        required: true
-        description: A link to the protocol for specimen collection.
-        examples:
-        - value: https://data.faang.org/api/fire_api/samples/WU_SOP_GENESWITCH_PIGLET_AND_FETUS_D70_SAMPLING_20210907.pdf
-        slot_uri: faang:specimen_collection_protocol
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      derived_from:
-        identifier: false
-        required: true
-        description: Sample name or BioSample ID for an animal record.
-        examples:
-        - value: SAMEA112465628
-        slot_uri: faang:derived_from
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      cultivar:
-        identifier: false
-        required: false
-        description: A plant variety that has been selectively bred and maintained
-          through cultivation to have specific desirable traits, such as yield, resistance
-          to disease, or appearance.
-        examples:
-        - value: cv. Paragon
-        slot_uri: ei:cultivar
-        domain: Sample
-        range: string
-        multivalued: false
-        inlined: false
-      materialSourceID:
-        identifier: false
-        required: false
-        description: The code used to identify the biological germplasm, strain, cell
-          line or other source material. Useful for reordering material.
-        examples:
-        - value: JIC GRU WM0013
-        slot_uri: ei:materialSourceID
-        domain: Sample
-        range: string
+        range: BIOSAMPLEACCESSION_FIELD
         multivalued: false
         inlined: false
   Dissociation:
     attributes:
       study_id:
         identifier: false
-        required: true
+        required: false
         description: A unique alphanumeric identifier for this study
         examples:
         - value: A7F9B3X2
@@ -2043,11 +536,11 @@ classes:
         inlined: false
       cell_type:
         identifier: false
-        required: true
+        required: false
         description: Provide a cell type from the CL ontology.
         examples:
         - value: blastocyst
-        slot_uri: faang:cell_type
+        slot_uri: ei:cell_type
         domain: Dissociation
         range: string
         multivalued: false
@@ -2094,8 +587,10 @@ classes:
       sample_id:
         identifier: false
         required: true
-        description: A unique alphanumeric reference or identifier assigned to the
-          cell suspension for the sample in the study.
+        description: A unique alphanumeric reference or identifier for the sample
+          associated with the cell suspension. This field must provide a consistent,
+          unambiguous way to identify the sample within and across datasets. It can
+          be a name, code, or accession-like format, as long as it remains unique.
         examples:
         - value: sample123
         slot_uri: ei:sample_id
@@ -2598,6 +1093,37 @@ classes:
         range: string
         multivalued: false
         inlined: false
+      library_selection:
+        identifier: false
+        required: true
+        description: The method used to select for or against, enrich, or screen the
+          material being sequenced.
+        examples: []
+        slot_uri: ei:library_selection
+        domain: Library Preparation
+        range: enum
+        multivalued: false
+        inlined: false
+      library_source:
+        identifier: false
+        required: true
+        description: The type of source material that is being sequenced.
+        examples: []
+        slot_uri: ei:library_source
+        domain: Library Preparation
+        range: enum
+        multivalued: false
+        inlined: false
+      library_strategy:
+        identifier: false
+        required: true
+        description: The sequencing technique intended for this library.
+        examples: []
+        slot_uri: ei:library_strategy
+        domain: Library Preparation
+        range: enum
+        multivalued: false
+        inlined: false
       nucl_acid_amp:
         identifier: false
         required: false
@@ -2723,8 +1249,10 @@ classes:
       sample_id:
         identifier: false
         required: false
-        description: A unique alphanumeric reference or identifier assigned to the
-          cell suspension for the sample in the study.
+        description: A unique alphanumeric reference or identifier for the sample
+          assigned to the library preparation. This field must provide a consistent,
+          unambiguous way to identify the sample within and across datasets. It can
+          be a name, code, or accession-like format, as long as it remains unique.
         examples:
         - value: sample123
         slot_uri: ei:sample_id
@@ -3493,14 +2021,14 @@ classes:
         range: string
         multivalued: false
         inlined: false
-      lib_prep_id:
+      library_prep_id:
         identifier: false
         required: false
         description: A unique alphanumeric reference or identifier for the library
           preparation protocol used during the sequencing.
         examples:
         - value: libPrep123
-        slot_uri: ei:lib_prep_id
+        slot_uri: ei:library_prep_id
         domain: File
         range: string
         multivalued: false
@@ -3598,32 +2126,6 @@ classes:
         range: string
         multivalued: false
         inlined: false
-      index_1_file_checksum:
-        identifier: false
-        required: false
-        description: Result of a hash function calculated on the content of  the index
-          1 file  to verify file integrity. Commonly used algorithms include MD5 and
-          SHA-1. The checksums should be separated by a comma (,).
-        examples:
-        - value: d41d8cd98f00b204e9800998ecf8427e
-        slot_uri: ei:index_1_file_checksum
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
-      index_2_file_checksum:
-        identifier: false
-        required: false
-        description: Result of a hash function calculated on the content of  the index
-          2 file  to verify file integrity. Commonly used algorithms include MD5 and
-          SHA-1. The checksums should be separated by a comma (,).
-        examples:
-        - value: d41d8cd98f00b204e9800998ecf8427e
-        slot_uri: ei:index_2_file_checksum
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
       white_list_barcode_file:
         identifier: false
         required: false
@@ -3635,30 +2137,6 @@ classes:
         slot_uri: ei:white_list_barcode_file
         domain: File
         range: file
-        multivalued: false
-        inlined: false
-      file_name:
-        identifier: false
-        required: true
-        description: A filename or file name is a name used to uniquely identify a
-          data file related to the study.
-        examples:
-        - value: file001
-        slot_uri: ei:file_name
-        domain: File
-        range: file
-        multivalued: false
-        inlined: false
-      file_type:
-        identifier: false
-        required: true
-        description: A file type is a name given to a specific kind of file. Common
-          file types are fastq, gtf, fasta, bam, archive etc.
-        examples:
-        - value: fastq
-        slot_uri: ei:file_type
-        domain: File
-        range: string
         multivalued: false
         inlined: false
       expression_data_file:
@@ -3681,6 +2159,30 @@ classes:
         examples:
         - value: img123
         slot_uri: ei:imaging_protocol_id
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
+      file_name:
+        identifier: false
+        required: true
+        description: A filename or file name is a name used to uniquely identify a
+          data file related to the study.
+        examples:
+        - value: file001
+        slot_uri: ei:file_name
+        domain: File
+        range: file
+        multivalued: false
+        inlined: false
+      file_type:
+        identifier: false
+        required: true
+        description: A file type is a name given to a specific kind of file. Common
+          file types are fastq, gtf, fasta, bam, archive etc.
+        examples:
+        - value: fastq
+        slot_uri: ei:file_type
         domain: File
         range: string
         multivalued: false
@@ -3890,140 +2392,14 @@ enums:
       Microfluidics, Facs, Culturing, Sequencing: {}
       Microfluidics, Facs, Sequencing: {}
       Spatial Transcriptomics: {}
-  Tissue:
+  Licence:
     permissible_values:
-      Abdomen: {}
-      Anterior Body: {}
-      Blade: {}
-      Blood: {}
-      Bodywall: {}
-      Bone marrow hematopoietic niches: {}
-      Bract: {}
-      Brain: {}
-      Bud: {}
-      Cap: {}
-      Cephalothorax: {}
-      Cortex development in roots: {}
-      DNA Extract: {}
-      Developing brain: {}
-      Developing embryo: {}
-      Developing seed coat: {}
-      Egg: {}
-      Eggshell: {}
-      Embryonic stem cells: {}
-      Endocrine Tissue: {}
-      Endosperm: {}
-      Eye: {}
-      Fat Body: {}
-      Fetal heart: {}
-      Fetal kidney: {}
-      Fetal liver: {}
-      Fetal lung: {}
-      Fin: {}
-      Floral meristem: {}
-      Flower: {}
-      Gastrulation-stage embryo: {}
-      Gill Animal: {}
-      Gill Fungi: {}
-      Gonad: {}
-      Gut: {}
-      Hair: {}
-      Head: {}
-      Heart: {}
-      Hepatopancreas: {}
-      Holdfast Fungi: {}
-      Hypocotyl: {}
-      Inflorescence: {}
-      Intestine: {}
-      Kidney: {}
-      Leaf: {}
-      Leaf primordia: {}
-      Leg: {}
-      Limb bud: {}
-      Liver: {}
-      Lung: {}
-      Mid Body: {}
-      Modular Colony: {}
-      Mollusc Foot: {}
-      Multicellular Organisms In Culture: {}
-      Muscle: {}
-      Mycelium: {}
-      Mycorrhiza: {}
-      Neonatal retina: {}
-      Neural crest cells: {}
-      Nodules: {}
-      Not Applicable: {}
-      Not Collected: {}
-      Not Provided: {}
-      Olfactory epithelium: {}
-      Other Fungal Tissue: {}
-      Other Plant Tissue: {}
-      Other Reproductive Animal Tissue: {}
-      Other Somatic Animal Tissue: {}
-      Ovary Animal: {}
-      Oviduct: {}
-      Ovule primordium: {}
-      Pancreas: {}
-      Petiole: {}
-      Placental trophoblast cells: {}
-      Pollen mother cells: {}
-      Posterior Body: {}
-      Postnatal thymus: {}
-      'Rhizome meristem ': {}
-      Root: {}
-      Root apical meristem: {}
-      Scales: {}
-      Scat: {}
-      Seed: {}
-      Seedling: {}
-      Shoot: {}
-      Shoot apical meristem: {}
-      Skin: {}
-      Somitic mesoderm: {}
-      Sperm Seminal Fluid: {}
-      Spleen: {}
-      Spore: {}
-      Spore Bearing Structure: {}
-      Stem: {}
-      Stipe: {}
-      Stomach: {}
-      Tentacle: {}
-      Terminal Body: {}
-      Testis: {}
-      Thallus Fungi: {}
-      Thallus Plant: {}
-      Thorax: {}
-      Trichome precursor cells: {}
-      Unicellular Organisms In Culture: {}
-      Vascular cambium: {}
-      Whole Organism: {}
-      Whole Plant: {}
-  Preparations:
-    permissible_values:
-      Air dried: {}
-      Dry ice: {}
-      Ethanol/Dry ice slurry: {}
-      Lyophilised: {}
-      Not Applicable: {}
-      Not Collected: {}
-      Not Provided: {}
-      Other: {}
-      RNALater: {}
-      Snap frozen: {}
-  Disposition:
-    permissible_values:
-      Deaccessioned: {}
-      Destroyed: {}
-      In collection: {}
-      Missing: {}
-      On loan: {}
-      Used up: {}
-  Reproductivecondition:
-    permissible_values:
-      Fruit-bearing: {}
-      In bloom: {}
-      Non-reproductive: {}
-      Pregnant: {}
+      Apache License 2.0: {}
+      Creative Commons Attribution 4.0 International: {}
+      Creative Commons Attribution Share Alike 4.0 International: {}
+      Creative Commons Zero v1.0 Universal: {}
+      GNU General Public License v3.0 or later: {}
+      MIT License: {}
   Isolation_kit:
     permissible_values:
       10x Nuclei Isolation Kit: {}
@@ -4065,6 +2441,86 @@ enums:
     permissible_values:
       CD41+: {}
       CD41-: {}
+  Library_selection:
+    permissible_values:
+      5-methylcytidine antibody: {}
+      CAGE: {}
+      ChIP: {}
+      ChIP-Seq: {}
+      DNase: {}
+      HMPR: {}
+      Hybrid Selection: {}
+      Inverse rRNA selection: {}
+      MBD2 protein methyl-CpG binding domain: {}
+      MDA: {}
+      MF: {}
+      MNase: {}
+      MSLL: {}
+      Oligo-dT: {}
+      PCR: {}
+      RACE: {}
+      RANDOM: {}
+      RANDOM PCR: {}
+      RT-PCR: {}
+      Reduced Representation: {}
+      Restriction Digest: {}
+      cDNA: {}
+      other: {}
+      padlock probes capture method: {}
+      repeat fractionation: {}
+      size fractionation: {}
+      unspecified: {}
+  Library_source:
+    permissible_values:
+      GENOMIC: {}
+      METAGENOMIC: {}
+      METATRANSCRIPTOMIC: {}
+      OTHER: {}
+      SYNTHETIC: {}
+      TRANSCRIPTOMIC: {}
+      VIRAL RNA: {}
+  Library_strategy:
+    permissible_values:
+      AMPLICON: {}
+      ATAC-seq: {}
+      Bisulfite-Seq: {}
+      CLONE: {}
+      CLONEEND: {}
+      CTS: {}
+      ChIA-PET: {}
+      ChIP-Seq: {}
+      ChM-Seq: {}
+      DNase-Hypersensitivity: {}
+      EST: {}
+      FAIRE-seq: {}
+      FINISHING: {}
+      FL-cDNA: {}
+      GBS: {}
+      Hi-C: {}
+      MBD-Seq: {}
+      MNase-Seq: {}
+      MRE-Seq: {}
+      MeDIP-Seq: {}
+      OTHER: {}
+      POOLCLONE: {}
+      RAD-Seq: {}
+      RIP-Seq: {}
+      RNA-Seq: {}
+      Ribo-Seq: {}
+      SELEX: {}
+      Synthetic-Long-Read: {}
+      Targeted-Capture: {}
+      Tethered Chromatin Conformation Capture: {}
+      Tn-Seq: {}
+      VALIDATION: {}
+      WCS: {}
+      WGA: {}
+      WGS: {}
+      WXS: {}
+      miRNA-Seq: {}
+      ncRNA-Seq: {}
+      snRNA-seq: {}
+      ssRNA-seq: {}
   Sequencing_instrument_model:
     permissible_values:
       454 GS: {}
@@ -4194,72 +2650,6 @@ enums:
       Phosphate buffer: {}
       Sterile swab: {}
       Sterile syringe: {}
-  Lib_screen:
-    permissible_values:
-      Enriched: {}
-      Normalised: {}
-      Screened: {}
-  Pathogenicity:
-    permissible_values:
-      Animal: {}
-      Bacteria: {}
-      Fungi: {}
-      Human: {}
-      Plant: {}
-  Propagation:
-    permissible_values:
-      Asexual: {}
-      Incompatibility Group: {}
-      Lysogenic: {}
-      Lytic: {}
-      Obligately Lytic: {}
-      Sexual: {}
-      Temperate: {}
-  Biotic_relationship:
-    permissible_values:
-      Commensalism: {}
-      Free living: {}
-      Mutualism: {}
-      Parasitism: {}
-      Symbiotic: {}
-  Tax_ident:
-    permissible_values:
-      16S rRNA gene: {}
-      Multi-marker approach: {}
-      Other: {}
-  Trophic_level:
-    permissible_values:
-      Autotroph: {}
-      Carboxydotroph: {}
-      Chemoautolithotroph: {}
-      Chemoautotroph: {}
-      Chemoheterotroph: {}
-      Chemolithoautotroph: {}
-      Chemolithotroph: {}
-      Chemoorganoheterotroph: {}
-      Chemoorganotroph: {}
-      Chemosynthetic: {}
-      Chemotroph: {}
-      Copiotroph: {}
-      Diazotroph: {}
-      Facultative: {}
-      Heterotroph: {}
-      Lithoautotroph: {}
-      Lithoheterotroph: {}
-      Lithotroph: {}
-      Methanotroph: {}
-      Methylotroph: {}
-      Mixotroph: {}
-      Obligate: {}
-      Oligotroph: {}
-      Organoheterotroph: {}
-      Organotroph: {}
-      Photoautotroph: {}
-      Photoheterotroph: {}
-      Photolithoautotroph: {}
-      Photolithotroph: {}
-      Photosynthetic: {}
-      Phototroph: {}
   Assembly_qual:
     permissible_values:
       Finished genome: {}
@@ -4267,126 +2657,6 @@ enums:
       High-quality draft genome: {}
       Low-quality draft genome: {}
       Medium-quality draft genome: {}
-  Tissue_for_barcoding:
-    permissible_values:
-      Abdomen: {}
-      Anterior Body: {}
-      Blade: {}
-      Blood: {}
-      Bodywall: {}
-      Bone marrow hematopoietic niches: {}
-      Bract: {}
-      Brain: {}
-      Bud: {}
-      Cap: {}
-      Cephalothorax: {}
-      Cortex development in roots: {}
-      DNA Extract: {}
-      Developing brain: {}
-      Developing embryo: {}
-      Developing seed coat: {}
-      Egg: {}
-      Eggshell: {}
-      Embryonic stem cells: {}
-      Endocrine Tissue: {}
-      Endosperm: {}
-      Eye: {}
-      Fat Body: {}
-      Fetal heart: {}
-      Fetal kidney: {}
-      Fetal liver: {}
-      Fetal lung: {}
-      Fin: {}
-      Floral meristem: {}
-      Flower: {}
-      Gastrulation-stage embryo: {}
-      Gill Animal: {}
-      Gill Fungi: {}
-      Gonad: {}
-      Gut: {}
-      Hair: {}
-      Head: {}
-      Heart: {}
-      Hepatopancreas: {}
-      Holdfast Fungi: {}
-      Hypocotyl: {}
-      Inflorescence: {}
-      Intestine: {}
-      Kidney: {}
-      Leaf: {}
-      Leaf primordia: {}
-      Leg: {}
-      Limb bud: {}
-      Liver: {}
-      Lung: {}
-      Mid Body: {}
-      Modular Colony: {}
-      Mollusc Foot: {}
-      Multicellular Organisms In Culture: {}
-      Muscle: {}
-      Mycelium: {}
-      Mycorrhiza: {}
-      Neonatal retina: {}
-      Neural crest cells: {}
-      Nodules: {}
-      Not Applicable: {}
-      Not Collected: {}
-      Not Provided: {}
-      Olfactory epithelium: {}
-      Other Fungal Tissue: {}
-      Other Plant Tissue: {}
-      Other Reproductive Animal Tissue: {}
-      Other Somatic Animal Tissue: {}
-      Ovary Animal: {}
-      Oviduct: {}
-      Ovule primordium: {}
-      Pancreas: {}
-      Petiole: {}
-      Placental trophoblast cells: {}
-      Pollen mother cells: {}
-      Posterior Body: {}
-      Postnatal thymus: {}
-      'Rhizome meristem ': {}
-      Root: {}
-      Root apical meristem: {}
-      Scales: {}
-      Scat: {}
-      Seed: {}
-      Seedling: {}
-      Shoot: {}
-      Shoot apical meristem: {}
-      Skin: {}
-      Somitic mesoderm: {}
-      Sperm Seminal Fluid: {}
-      Spleen: {}
-      Spore: {}
-      Spore Bearing Structure: {}
-      Stem: {}
-      Stipe: {}
-      Stomach: {}
-      Tentacle: {}
-      Terminal Body: {}
-      Testis: {}
-      Thallus Fungi: {}
-      Thallus Plant: {}
-      Thorax: {}
-      Trichome precursor cells: {}
-      Unicellular Organisms In Culture: {}
-      Vascular cambium: {}
-      Whole Organism: {}
-      Whole Plant: {}
-  Preservation_approach:
-    permissible_values:
-      Air dried: {}
-      Dry ice: {}
-      Ethanol/Dry ice slurry: {}
-      Lyophilised: {}
-      Not Applicable: {}
-      Not Collected: {}
-      Not Provided: {}
-      Other: {}
-      RNALater: {}
-      Snap frozen: {}
   Cell_number:
     permissible_values:
       '1': {}
@@ -4417,315 +2687,6 @@ enums:
       Fluorescence-activated Cell Sorting (FACS): {}
       Magnetic levitation: {}
       Raman-spectometry sorting, cell culture: {}
-  Sex:
-    permissible_values:
-      Diandrous: {}
-      Female: {}
-      Female with DSD: {}
-      Hermaphrodite: {}
-      Male: {}
-      Male with DSD: {}
-      Monandrous: {}
-      Pseuodohermaphrodite: {}
-  Geographic_location:
-    permissible_values:
-      Afghanistan: {}
-      Albania: {}
-      Algeria: {}
-      American Samoa: {}
-      Andorra: {}
-      Angola: {}
-      Anguilla: {}
-      Antarctica: {}
-      Antigua and Barbuda: {}
-      Arctic Ocean: {}
-      Argentina: {}
-      Armenia: {}
-      Aruba: {}
-      Ashmore and Cartier Islands: {}
-      Atlantic Ocean: {}
-      Australia: {}
-      Austria: {}
-      Azerbaijan: {}
-      Bahamas: {}
-      Bahrain: {}
-      Baker Island: {}
-      Baltic Sea: {}
-      Bangladesh: {}
-      Barbados: {}
-      Bassas da India: {}
-      Belarus: {}
-      Belgian Congo: {}
-      Belgium: {}
-      Belize: {}
-      Benin: {}
-      Bermuda: {}
-      Bhutan: {}
-      Bolivia: {}
-      Borneo: {}
-      Bosnia and Herzegovina: {}
-      Botswana: {}
-      Bouvet Island: {}
-      Brazil: {}
-      British Guiana: {}
-      British Virgin Islands: {}
-      Brunei: {}
-      Bulgaria: {}
-      Burkina Faso: {}
-      Burma: {}
-      Burundi: {}
-      Cambodia: {}
-      Cameroon: {}
-      Canada: {}
-      Cape Verde: {}
-      Cayman Islands: {}
-      Central African Republic: {}
-      Chad: {}
-      Chile: {}
-      China: {}
-      Christmas Island: {}
-      Clipperton Island: {}
-      Cocos Islands: {}
-      Colombia: {}
-      Comoros: {}
-      Cook Islands: {}
-      Coral Sea Islands: {}
-      Costa Rica: {}
-      "Cote d\u201A\xC4\xF4Ivoire": {}
-      Croatia: {}
-      Cuba: {}
-      Curacao: {}
-      Cyprus: {}
-      Czech Republic: {}
-      Czechoslovakia: {}
-      Democratic Republic of the Congo: {}
-      Denmark: {}
-      Djibouti: {}
-      Dominica: {}
-      Dominican Republic: {}
-      East Timor: {}
-      Ecuador: {}
-      Egypt: {}
-      El Salvador: {}
-      Equatorial Guinea: {}
-      Eritrea: {}
-      Estonia: {}
-      Eswatini: {}
-      Ethiopia: {}
-      Europa Island: {}
-      Falkland Islands (Islas Malvinas): {}
-      Faroe Islands: {}
-      Federated States of: {}
-      Fiji: {}
-      Finland: {}
-      Former Yugoslav Republic of Macedonia: {}
-      France: {}
-      French Guiana: {}
-      French Polynesia: {}
-      French Southern and Antarctic Lands: {}
-      Gabon: {}
-      Gambia: {}
-      Gaza Strip: {}
-      Georgia: {}
-      Germany: {}
-      Ghana: {}
-      Gibraltar: {}
-      Glorioso Islands: {}
-      Greece: {}
-      Greenland: {}
-      Grenada: {}
-      Guadeloupe: {}
-      Guam: {}
-      Guatemala: {}
-      Guernsey: {}
-      Guinea: {}
-      Guinea-Bissau: {}
-      Guyana: {}
-      Haiti: {}
-      Heard Island and McDonald Islands: {}
-      Honduras: {}
-      Hong Kong: {}
-      Howland Island: {}
-      Hungary: {}
-      Iceland: {}
-      India: {}
-      Indian Ocean: {}
-      Indonesia: {}
-      Iran: {}
-      Iraq: {}
-      Ireland: {}
-      Isle of Man: {}
-      Israel: {}
-      Italy: {}
-      Jamaica: {}
-      Jan Mayen: {}
-      Japan: {}
-      Jarvis Island: {}
-      Jersey: {}
-      Johnston Atoll: {}
-      Jordan: {}
-      Juan de Nova Island: {}
-      Kazakhstan: {}
-      Kenya: {}
-      Kerguelen Archipelago: {}
-      Kingman Reef: {}
-      Kiribati: {}
-      Korea: {}
-      Kosovo: {}
-      Kuwait: {}
-      Kyrgyzstan: {}
-      Laos: {}
-      Latvia: {}
-      Lebanon: {}
-      Lesotho: {}
-      Liberia: {}
-      Libya: {}
-      Liechtenstein: {}
-      Line Islands: {}
-      Lithuania: {}
-      Luxembourg: {}
-      Macau: {}
-      Macedonia: {}
-      Madagascar: {}
-      Malawi: {}
-      Malaysia: {}
-      Maldives: {}
-      Mali: {}
-      Malta: {}
-      Marshall Islands: {}
-      Martinique: {}
-      Mauritania: {}
-      Mauritius: {}
-      Mayotte: {}
-      Mediterranean Sea: {}
-      Mexico: {}
-      Micronesia: {}
-      Midway Islands: {}
-      Moldova: {}
-      Monaco: {}
-      Mongolia: {}
-      Montenegro: {}
-      Montserrat: {}
-      Morocco: {}
-      Mozambique: {}
-      Myanmar: {}
-      Namibia: {}
-      Nauru: {}
-      Navassa Island: {}
-      Nepal: {}
-      Netherlands: {}
-      Netherlands Antilles: {}
-      New Caledonia: {}
-      New Zealand: {}
-      Nicaragua: {}
-      Niger: {}
-      Nigeria: {}
-      Niue: {}
-      Norfolk Island: {}
-      North Korea: {}
-      North Macedonia: {}
-      North Sea: {}
-      Northern Mariana Islands: {}
-      Norway: {}
-      Oman: {}
-      Pacific Ocean: {}
-      Pakistan: {}
-      Palau: {}
-      Palmyra Atoll: {}
-      Panama: {}
-      Papua New Guinea: {}
-      Paracel Islands: {}
-      Paraguay: {}
-      Peru: {}
-      Philippines: {}
-      Pitcairn Islands: {}
-      Poland: {}
-      Portugal: {}
-      Puerto Rico: {}
-      Qatar: {}
-      Republic of the Congo: {}
-      Reunion: {}
-      Romania: {}
-      Ross Sea: {}
-      Russia: {}
-      Rwanda: {}
-      Saint Barthelemy: {}
-      Saint Helena: {}
-      Saint Kitts and Nevis: {}
-      Saint Lucia: {}
-      Saint Martin: {}
-      Saint Pierre and Miquelon: {}
-      Saint Vincent and the Grenadines: {}
-      Samoa: {}
-      San Marino: {}
-      Sao Tome and Principe: {}
-      Saudi Arabia: {}
-      Senegal: {}
-      Serbia: {}
-      Serbia and Montenegro: {}
-      Seychelles: {}
-      Siam: {}
-      Sierra Leone: {}
-      Singapore: {}
-      Sint Maarten: {}
-      Slovakia: {}
-      Slovenia: {}
-      Solomon Islands: {}
-      Somalia: {}
-      South Africa: {}
-      South Georgia and the South Sandwich Islands: {}
-      South Korea: {}
-      South Sudan: {}
-      Southern Ocean: {}
-      Spain: {}
-      Spratly Islands: {}
-      Sri Lanka: {}
-      State of Palestine: {}
-      Sudan: {}
-      Suriname: {}
-      Svalbard: {}
-      Swaziland: {}
-      Sweden: {}
-      Switzerland: {}
-      Syria: {}
-      Taiwan: {}
-      Tajikistan: {}
-      Tanzania: {}
-      Tasman Sea: {}
-      Thailand: {}
-      The former Yugoslav Republic of Macedonia: {}
-      Timor-Leste: {}
-      Togo: {}
-      Tokelau: {}
-      Tonga: {}
-      Trinidad and Tobago: {}
-      Tromelin Island: {}
-      Tunisia: {}
-      Turkey: {}
-      Turkmenistan: {}
-      Turks and Caicos Islands: {}
-      Tuvalu: {}
-      USA: {}
-      USSR: {}
-      Uganda: {}
-      Ukraine: {}
-      United Arab Emirates: {}
-      United Kingdom: {}
-      Uruguay: {}
-      Uzbekistan: {}
-      Vanuatu: {}
-      Venezuela: {}
-      Viet Nam: {}
-      Virgin Islands: {}
-      Wake Island: {}
-      Wallis and Futuna: {}
-      West Bank: {}
-      Western Sahara: {}
-      Yemen: {}
-      Yugoslavia: {}
-      'Zaire ': {}
-      Zambia: {}
-      Zimbabwe: {}
   Tissue_dissociation:
     permissible_values:
       Fine needle trituration: {}
