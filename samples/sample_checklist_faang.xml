@@ -29,9 +29,7 @@
                 <NAME>organism</NAME>
                 <DESCRIPTION>NCBI taxon ID of organism. Example: 9606</DESCRIPTION>
                 <FIELD_TYPE>
-                    <TEXT_FIELD>
-                        <TAXON_ID_FIELD/>
-                    </TEXT_FIELD>
+                    <TAXON_ID_FIELD/>
                 </FIELD_TYPE>
                 <MANDATORY>mandatory</MANDATORY>
                 <MULTIPLICITY>single</MULTIPLICITY>
