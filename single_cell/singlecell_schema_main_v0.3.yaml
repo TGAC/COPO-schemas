@@ -396,7 +396,7 @@ classes:
     attributes:
       study_id:
         identifier: false
-        required: false
+        required: true
         description: A unique alphanumeric identifier for this study
         examples:
         - value: A7F9B3X2
@@ -536,11 +536,11 @@ classes:
         inlined: false
       cell_type:
         identifier: false
-        required: false
+        required: true
         description: Provide a cell type from the CL ontology.
         examples:
         - value: blastocyst
-        slot_uri: ei:cell_type
+        slot_uri: faang:cell_type
         domain: Dissociation
         range: string
         multivalued: false
@@ -2107,7 +2107,7 @@ classes:
           1 file  to verify file integrity. Commonly used algorithms include MD5 and
           SHA-1. The checksums should be separated by a comma (,).
         examples:
-        - value: d41d8cd98f00b204e9800998ecf8427e
+        - value: 32-char hex
         slot_uri: ei:read_1_file_checksum
         domain: File
         range: string
@@ -2120,7 +2120,7 @@ classes:
           2 file  to verify file integrity. Commonly used algorithms include MD5 and
           SHA-1. The checksums should be separated by a comma (,).
         examples:
-        - value: d41d8cd98f00b204e9800998ecf8427e
+        - value: 32-char hex
         slot_uri: ei:read_2_file_checksum
         domain: File
         range: string
@@ -2135,19 +2135,6 @@ classes:
         examples:
         - value: barcodes.tsv
         slot_uri: ei:white_list_barcode_file
-        domain: File
-        range: file
-        multivalued: false
-        inlined: false
-      expression_data_file:
-        identifier: false
-        required: false
-        description: The name or accession of the file which quantifies the level
-          of gene, transcript, or protein expression in a given biological sample
-          or condition.
-        examples:
-        - value: filename1.txt
-        slot_uri: ei:expression_data_file
         domain: File
         range: file
         multivalued: false
@@ -2184,6 +2171,313 @@ classes:
         - value: fastq
         slot_uri: ei:file_type
         domain: File
+        range: string
+        multivalued: false
+        inlined: false
+  Expression Data Process Setting:
+    attributes:
+      study_id:
+        identifier: false
+        required: true
+        description: A unique alphanumeric identifier for this study
+        examples:
+        - value: A7F9B3X2
+        slot_uri: ei:study_id
+        domain: Expression Data Process Setting
+        range: string
+        multivalued: false
+        inlined: false
+      expression_data_process_setting_id:
+        identifier: true
+        required: true
+        description: A unique alphanumeric identifier for the expression data process
+          setting
+        examples:
+        - value: expdataprocess1
+        slot_uri: ei:expression_data_process_setting_id
+        domain: Expression Data Process Setting
+        range: string
+        multivalued: false
+        inlined: false
+      matrix_type:
+        identifier: false
+        required: false
+        description: Matrix Type
+        examples:
+        - value: raw_counts
+        - value: normalised
+        - value: log1p
+        - value: scaled
+        - value: imputed
+        - value: "pseudobulk \u2026"
+        slot_uri: ei:matrix_type
+        domain: Expression Data Process Setting
+        range: enum
+        multivalued: false
+        inlined: false
+      reference_genome:
+        identifier: false
+        required: true
+        description: The associated reference genome
+        examples:
+        - value: the download link for GRCh38.p13
+        - value: GRCm39
+        - value: "TAIR10 \u2026"
+        slot_uri: ei:reference_genome
+        domain: Expression Data Process Setting
+        range: string
+        multivalued: false
+        inlined: false
+      annotation_version:
+        identifier: false
+        required: false
+        description: The annotation version of the associated reference genome
+        examples:
+        - value: Ensembl 110
+        - value: "GENCODE v44 \u2026"
+        slot_uri: ei:annotation_version
+        domain: Expression Data Process Setting
+        range: string
+        multivalued: false
+        inlined: false
+      normalisation_method:
+        identifier: false
+        required: false
+        description: Any normalisation processing performed
+        examples: []
+        slot_uri: ei:normalisation_method
+        domain: Expression Data Process Setting
+        range: enum
+        multivalued: false
+        inlined: false
+      highly_variable_gene_selection:
+        identifier: false
+        required: false
+        description: Number of Highly Variable Genes
+        examples:
+        - value: seurat_v3
+        - value: n=2000 (or none)
+        slot_uri: ei:highly_variable_gene_selection
+        domain: Expression Data Process Setting
+        range: string
+        multivalued: false
+        inlined: false
+      dimensionality_reduction:
+        identifier: false
+        required: false
+        description: Method used to reduce dimensionality in the expression data
+        examples: []
+        slot_uri: ei:dimensionality_reduction
+        domain: Expression Data Process Setting
+        range: enum
+        multivalued: false
+        inlined: false
+      n_neighbours:
+        identifier: false
+        required: false
+        description: Number of nearest neighbours used to calculate cluster membership
+        examples:
+        - value: pca:50
+        - value: "mnn:30 \u2026"
+        slot_uri: ei:n_neighbours
+        domain: Expression Data Process Setting
+        range: string
+        multivalued: false
+        inlined: false
+      clustering_algorithm:
+        identifier: false
+        required: false
+        description: Algorithm used to create clusters
+        examples: []
+        slot_uri: ei:clustering_algorithm
+        domain: Expression Data Process Setting
+        range: string
+        multivalued: false
+        inlined: false
+      clustering_resolution:
+        identifier: false
+        required: false
+        description: Resolution parameter
+        examples:
+        - value: Numeric (1.0) or NA
+        slot_uri: ei:clustering_resolution
+        domain: Expression Data Process Setting
+        range: string
+        multivalued: false
+        inlined: false
+      clustering_distance_metric:
+        identifier: false
+        required: false
+        description: Metic used to calculate a points distance to others
+        examples:
+        - value: Leiden
+        - value: Louvain
+        - value: Phenograph
+        - value: Walktrap
+        - value: Infomap
+        - value: Smart Local Moving
+        - value: Other
+        slot_uri: ei:clustering_distance_metric
+        domain: Expression Data Process Setting
+        range: enum
+        multivalued: false
+        inlined: false
+      software_versions:
+        identifier: false
+        required: false
+        description: Primary software packages used for analysis
+        examples: []
+        slot_uri: ei:software_versions
+        domain: Expression Data Process Setting
+        range: string
+        multivalued: false
+        inlined: false
+      cell-type%20annotation:
+        identifier: false
+        required: false
+        description: Tools and Databases used for cell annotation
+        examples: []
+        slot_uri: ei:cell-type%20annotation
+        domain: Expression Data Process Setting
+        range: string
+        multivalued: false
+        inlined: false
+      generated_by_pipeline:
+        identifier: false
+        required: false
+        description: URL of the deposited pipeline used to create this data
+        examples: []
+        slot_uri: ei:generated_by_pipeline
+        domain: Expression Data Process Setting
+        range: string
+        multivalued: false
+        inlined: false
+      notes:
+        identifier: false
+        required: false
+        description: Any other information
+        examples: []
+        slot_uri: ei:notes
+        domain: Expression Data Process Setting
+        range: string
+        multivalued: false
+        inlined: false
+  Expression Data File:
+    attributes:
+      study_id:
+        identifier: false
+        required: true
+        description: A unique alphanumeric identifier for this study
+        examples:
+        - value: A7F9B3X2
+        slot_uri: ei:study_id
+        domain: Expression Data File
+        range: string
+        multivalued: false
+        inlined: false
+      library_prep_id:
+        identifier: false
+        required: true
+        description: A unique alphanumeric identifier for library preparation
+        examples:
+        - value: libPrep123
+        slot_uri: ei:library_prep_id
+        domain: Expression Data File
+        range: string
+        multivalued: false
+        inlined: false
+      expression_data_setting_id:
+        identifier: false
+        required: true
+        description: A unique alphanumeric identifier for the expression data process
+          setting
+        examples:
+        - value: expdataprocess1
+        slot_uri: ei:expression_data_setting_id
+        domain: Expression Data File
+        range: string
+        multivalued: false
+        inlined: false
+      expression_data_file_id:
+        identifier: true
+        required: true
+        description: A unique alphanumeric identifier for the expression data file
+        examples:
+        - value: AB3X2
+        slot_uri: ei:expression_data_file_id
+        domain: Expression Data File
+        range: string
+        multivalued: false
+        inlined: false
+      expression_data_file:
+        identifier: false
+        required: true
+        description: Expression data file name
+        examples: []
+        slot_uri: ei:expression_data_file
+        domain: Expression Data File
+        range: file
+        multivalued: false
+        inlined: false
+      expression_data_file_checksum:
+        identifier: false
+        required: true
+        description: calculated md5 checksum for this file
+        examples:
+        - value: 32-char hex
+        slot_uri: ei:expression_data_file_checksum
+        domain: Expression Data File
+        range: string
+        multivalued: false
+        inlined: false
+      expression_data_file_format:
+        identifier: false
+        required: true
+        description: The format of the expression file, such as h5ad or rds
+        examples: []
+        slot_uri: ei:expression_data_file_format
+        domain: Expression Data File
+        range: enum
+        multivalued: false
+        inlined: false
+      n_cells:
+        identifier: false
+        required: false
+        description: The number of cells represented in the expression data
+        examples: []
+        slot_uri: ei:n_cells
+        domain: Expression Data File
+        range: string
+        multivalued: false
+        inlined: false
+      n_genes:
+        identifier: false
+        required: false
+        description: The number of genese represented in the expression data
+        examples: []
+        slot_uri: ei:n_genes
+        domain: Expression Data File
+        range: string
+        multivalued: false
+        inlined: false
+      file_size_bytes:
+        identifier: false
+        required: false
+        description: Size of the file recorded in bytes
+        examples: []
+        slot_uri: ei:file_size_bytes
+        domain: Expression Data File
+        range: string
+        multivalued: false
+        inlined: false
+      date_generated:
+        identifier: false
+        required: false
+        description: Approximate date this expression data was generated
+        examples:
+        - value: '2024-10-14'
+        slot_uri: ei:date_generated
+        domain: Expression Data File
         range: string
         multivalued: false
         inlined: false
@@ -2394,12 +2688,12 @@ enums:
       Spatial Transcriptomics: {}
   Licence:
     permissible_values:
-      Apache License 2.0: {}
-      Creative Commons Attribution 4.0 International: {}
-      Creative Commons Attribution Share Alike 4.0 International: {}
-      Creative Commons Zero v1.0 Universal: {}
-      GNU General Public License v3.0 or later: {}
-      MIT License: {}
+      Apache-2.0: {}
+      CC-BY-4.0: {}
+      CC-BY-SA-4.0: {}
+      CC0-1.0: {}
+      GPL-3.0-or-later: {}
+      MIT: {}
   Isolation_kit:
     permissible_values:
       10x Nuclei Isolation Kit: {}
@@ -2641,6 +2935,44 @@ enums:
       Gene: {}
       UMI: {}
       tSNE coordinates: {}
+  Matrix_type:
+    permissible_values:
+      imputed: {}
+      log1p: {}
+      nomalised: {}
+      pseudobulk: {}
+      raw_counts: {}
+      scaled: {}
+  Normalisation_method:
+    permissible_values:
+      Library Size Normalisation: {}
+      Log Normalisation: {}
+      SCNorm: {}
+      SCTransform: {}
+      scran: {}
+  Dimensionality_reduction:
+    permissible_values:
+      Diffusion Map: {}
+      ICA: {}
+      NMF: {}
+      PCA: {}
+      UMAP: {}
+      t-SNE: {}
+  Clustering_distance_metric:
+    permissible_values:
+      cosine: {}
+      euclidean: {}
+      hamming: {}
+      jaccard: {}
+      manhatten: {}
+      mehalanobis: {}
+  Expression_data_file_format:
+    permissible_values:
+      csv: {}
+      h5ad: {}
+      loom: {}
+      mtx: {}
+      rds: {}
   Neg_cont_type:
     permissible_values:
       DNA-free PCR mix: {}
