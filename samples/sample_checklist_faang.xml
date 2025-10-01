@@ -104,8 +104,8 @@
             </FIELD>
             <FIELD>
                 <LABEL>Specimen Collection Date</LABEL>
-                <SYNONYM>collection date</SYNONYM>
-                <NAME>specimen_collection_date</NAME>
+                <SYNONYM>specimen_collection_date</SYNONYM>
+                <NAME>collection date</NAME>
                 <DESCRIPTION>The date the sample was collected either as an instance (single point in time) or interval. In case no exact time is available, the date/time can be right truncated i.e. all of these are valid ISO8601 compliant times: 2008-01-23T19:23:10+00:00; 2008-01-23T19:23:10; 2008-01-23; 2008-01; 2008. Example: 2024-01-19</DESCRIPTION>
                 <FIELD_TYPE>
                     <TEXT_FIELD>
@@ -117,8 +117,8 @@
              </FIELD>
              <FIELD>
                 <LABEL>Geographic Location</LABEL>
-                <SYNONYM>geographic location (country and/or sea)</SYNONYM>
-                <NAME>geographic_location</NAME>
+                <SYNONYM>geographic_location</SYNONYM>
+                <NAME>geographic location (country and/or sea)</NAME>
                 <DESCRIPTION>The geographical origin of where the sample was collected from as defined by the country or sea name. Country or sea names should be chosen from the INSDC country list (http://insdc.org/country.html). Example: Algeria</DESCRIPTION>
                 <FIELD_TYPE>
                     <TEXT_CHOICE_FIELD>
@@ -1006,8 +1006,8 @@
             </FIELD>
              <FIELD>
                 <LABEL>Developmental Stage</LABEL>
-                <SYNONYM>dev_stage</SYNONYM>
-                <NAME>developmental_stage</NAME>
+                <SYNONYM>developmental_stage</SYNONYM>
+                <NAME>dev_stage</NAME>
                 <DESCRIPTION>If the sample was obtained from an organism in a specific developmental stage, it is specified with this qualifier. The ontology for Developmental stage, UBERON, is preferred to EFO. Example: juvenile stage</DESCRIPTION>
                 <FIELD_TYPE>
                     <ONTOLOGY>UBERON:0000105</ONTOLOGY>
@@ -1027,8 +1027,8 @@
             </FIELD>
             <FIELD>
                 <LABEL>Specimen Collection Protocol</LABEL>
-                <SYNONYM>collection_protocol</SYNONYM>
-                <NAME>specimen_collection_protocol</NAME>
+                <SYNONYM>specimen_collection_protocol</SYNONYM>
+                <NAME>collection_protocol</NAME>
                 <DESCRIPTION>A link to the protocol for specimen collection. Example: https://data.faang.org/api/fire_api/samples/WU_SOP_GENESWITCH_PIGLET_AND_FETUS_D70_SAMPLING_20210907.pdf</DESCRIPTION>
                 <FIELD_TYPE>
                     <TEXT_FIELD>
