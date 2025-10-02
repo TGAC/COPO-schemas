@@ -106,7 +106,7 @@ classes:
         inlined: false
       technology:
         identifier: false
-        required: false
+        required: true
         description: The sorting or visualisation technology used.
         examples:
         - value: Vizgen
@@ -124,7 +124,7 @@ classes:
           Creative Commons (e.g., CC BY 4.0), which require attribution to the original
           authors when the data is cited or reused.
         examples:
-        - value: MIT License
+        - value: MIT
         slot_uri: ei:licence
         domain: Study
         range: enum
@@ -196,7 +196,7 @@ classes:
         required: true
         description: The type of material being described.
         examples:
-        - value: organism
+        - value: Organism
         slot_uri: faang:material
         domain: Study
         range: enum
@@ -220,7 +220,7 @@ classes:
           e.g. 'fluorescence-activated cell sorting (FACS)'. Please contact FAANG
           DCC to add more terms.
         examples:
-        - value: fluorescence-activated cell sorting (FACS)
+        - value: Fluorescence-activated Cell Sorting (FACS)
         slot_uri: faang:cell_enrichment
         domain: Study
         range: enum
@@ -359,7 +359,7 @@ classes:
           taxonomic classification.
         examples:
         - value: Salvelinus alpinus
-        slot_uri: ei:scientific_name
+        slot_uri: ontology:scientific_name
         domain: Sample
         range: BIOSAMPLEACCESSION_EXT_FIELD
         multivalued: false
@@ -373,7 +373,7 @@ classes:
           \ maintain consistency and traceability in biological records."
         examples:
         - value: '8036'
-        slot_uri: ei:taxon_id
+        slot_uri: ontology:taxon_id
         domain: Sample
         range: BIOSAMPLEACCESSION_EXT_FIELD
         multivalued: false
@@ -387,7 +387,7 @@ classes:
           to retrieve metadata and link it across studies or datasets.
         examples:
         - value: SAMEA12907823
-        slot_uri: ei:biosampleAccession
+        slot_uri: ontology:biosampleAccession
         domain: Sample
         range: BIOSAMPLEACCESSION_FIELD
         multivalued: false
@@ -457,7 +457,7 @@ classes:
         required: false
         description: The kit used to isolate the cells.
         examples:
-        - value: BD Rhapsody Single-Cell Analysis System
+        - value: 10x Nuclei Isolation Kit
         slot_uri: ei:isolation_kit
         domain: Dissociation
         range: enum
@@ -542,7 +542,7 @@ classes:
         - value: blastocyst
         slot_uri: faang:cell_type
         domain: Dissociation
-        range: string
+        range: ontology
         multivalued: false
         inlined: false
       tissue_dissociation:
@@ -554,7 +554,7 @@ classes:
           is no tissue dissociation use 'fluids'. Please contact FAANG DCC to add
           more terms.
         examples:
-        - value: proteolysis
+        - value: Proteolysis
         slot_uri: faang:tissue_dissociation
         domain: Dissociation
         range: enum
@@ -584,6 +584,17 @@ classes:
         range: string
         multivalued: false
         inlined: false
+      cell_suspension_id:
+        identifier: true
+        required: true
+        description: A unique alphanumeric code for the cell suspension for the sample
+        examples:
+        - value: cellSusp123
+        slot_uri: ei:cell_suspension_id
+        domain: Cell Suspension
+        range: string
+        multivalued: false
+        inlined: false
       sample_id:
         identifier: false
         required: true
@@ -606,17 +617,6 @@ classes:
         examples:
         - value: disProtocol123
         slot_uri: ei:dissociation_protocol_id
-        domain: Cell Suspension
-        range: string
-        multivalued: false
-        inlined: false
-      cell_suspension_id:
-        identifier: true
-        required: true
-        description: A unique alphanumeric code for the cell suspension for the sample
-        examples:
-        - value: cellSusp123
-        slot_uri: ei:cell_suspension_id
         domain: Cell Suspension
         range: string
         multivalued: false
@@ -745,7 +745,7 @@ classes:
         description: An number representing the number of cells in the sequencing
           library.
         examples:
-        - value: '10000'
+        - value: 101-10000
         slot_uri: tol:cell_number
         domain: Cell Suspension
         range: enum
@@ -776,7 +776,7 @@ classes:
     attributes:
       study_id:
         identifier: false
-        required: false
+        required: true
         description: A unique alphanumeric identifier for this study
         examples:
         - value: A7F9B3X2
@@ -787,12 +787,12 @@ classes:
         inlined: false
       library_prep_id:
         identifier: true
-        required: false
+        required: true
         description: A unique alphanumeric reference or identifier for the library
           preparation protocol used during the sequencing.
         examples:
         - value: libPrep123
-        slot_uri: faang:library_prep_id
+        slot_uri: ei:library_prep_id
         domain: Library Preparation
         range: string
         multivalued: false
@@ -811,7 +811,7 @@ classes:
         inlined: false
       library_prep_kit:
         identifier: false
-        required: false
+        required: true
         description: Packaged kits (containing adapters, indexes, enzymes, buffers
           etc.), tailored for specific sequencing workflows, which allow the simplified
           preparation of sequencing-ready libraries for small genomes, amplicons,
@@ -825,11 +825,11 @@ classes:
         inlined: false
       library_prep_kit_version:
         identifier: false
-        required: false
+        required: true
         description: The version number of the library preparation kit used for sequencing.
         examples:
         - value: '2'
-        slot_uri: ei:library_prep_kit_version
+        slot_uri: ontology:library_prep_kit_version
         domain: Library Preparation
         range: string
         multivalued: false
@@ -979,7 +979,7 @@ classes:
         inlined: false
       i5_index:
         identifier: false
-        required: false
+        required: true
         description: Barcode sequence used on the i5 adapter during library preparation
           for identifying samples in multiplexed single-cell RNA-sequencing.
         examples:
@@ -991,7 +991,7 @@ classes:
         inlined: false
       i7_index:
         identifier: false
-        required: false
+        required: true
         description: Barcode sequence used on the i7 adapter to distinguish samples
           in multiplexed sequencing runs.
         examples:
@@ -1003,7 +1003,7 @@ classes:
         inlined: false
       dual_single_index:
         identifier: false
-        required: false
+        required: true
         description: Specifies if both i5 and i7 indices (dual) or only one index
           (single) was used for sample identification during sequencing.
         examples:
@@ -1015,7 +1015,7 @@ classes:
         inlined: false
       i5_sequence:
         identifier: false
-        required: false
+        required: true
         description: The nucleotide sequence of the i5 index used in multiplexing
           during sequencing.
         examples:
@@ -1027,7 +1027,7 @@ classes:
         inlined: false
       i7_sequence:
         identifier: false
-        required: false
+        required: true
         description: The specific nucleotide sequence of the i7 index used for a sample.
         examples:
         - value: TGCATGCA
@@ -1098,7 +1098,8 @@ classes:
         required: true
         description: The method used to select for or against, enrich, or screen the
           material being sequenced.
-        examples: []
+        examples:
+        - value: RANDOM PCR
         slot_uri: ei:library_selection
         domain: Library Preparation
         range: enum
@@ -1108,7 +1109,8 @@ classes:
         identifier: false
         required: true
         description: The type of source material that is being sequenced.
-        examples: []
+        examples:
+        - value: GENOMIC
         slot_uri: ei:library_source
         domain: Library Preparation
         range: enum
@@ -1118,7 +1120,8 @@ classes:
         identifier: false
         required: true
         description: The sequencing technique intended for this library.
-        examples: []
+        examples:
+        - value: RNA-Seq
         slot_uri: ei:library_strategy
         domain: Library Preparation
         range: enum
@@ -1227,7 +1230,7 @@ classes:
         inlined: false
       pool_creation_date:
         identifier: false
-        required: false
+        required: true
         description: Date at which the pool was created.
         examples:
         - value: YYYY-MM-DD
@@ -1238,24 +1241,10 @@ classes:
         inlined: false
       pool_creation_protocol:
         identifier: false
-        required: false
+        required: true
         description: A link to the protocol for pool of specimens creation.
         examples: []
         slot_uri: faang:pool_creation_protocol
-        domain: Library Preparation
-        range: string
-        multivalued: false
-        inlined: false
-      sample_id:
-        identifier: false
-        required: false
-        description: A unique alphanumeric reference or identifier for the sample
-          assigned to the library preparation. This field must provide a consistent,
-          unambiguous way to identify the sample within and across datasets. It can
-          be a name, code, or accession-like format, as long as it remains unique.
-        examples:
-        - value: sample123
-        slot_uri: ei:sample_id
         domain: Library Preparation
         range: string
         multivalued: false
@@ -1264,7 +1253,7 @@ classes:
     attributes:
       study_id:
         identifier: false
-        required: false
+        required: true
         description: A unique alphanumeric identifier for this study
         examples:
         - value: A7F9B3X2
@@ -1275,42 +1264,42 @@ classes:
         inlined: false
       sequencing_id:
         identifier: true
-        required: false
+        required: true
         description: A unique alphanumeric reference or identifier for the sequencing
           protocol.
         examples:
         - value: seq123
-        slot_uri: ei:sequencing_id
+        slot_uri: ontology:sequencing_id
         domain: Sequencing
         range: string
         multivalued: false
         inlined: false
       sequencing_platform_name:
         identifier: false
-        required: false
+        required: true
         description: The name of the sequencing platform used for the experiment.
         examples:
         - value: Pacbio
-        slot_uri: ei:sequencing_platform_name
+        slot_uri: ontology:sequencing_platform_name
         domain: Sequencing
         range: string
         multivalued: false
         inlined: false
       sequencing_instrument_model:
         identifier: false
-        required: false
+        required: true
         description: This refers to the machine or platform used for sequencing, with
           variations in throughput, read lengths, error rates, and application suitability.
         examples:
         - value: Illumina NovaSeq 6000
-        slot_uri: ei:sequencing_instrument_model
+        slot_uri: ontology:sequencing_instrument_model
         domain: Sequencing
         range: enum
         multivalued: false
         inlined: false
       lib_layout:
         identifier: false
-        required: false
+        required: true
         description: Specify whether to expect single, paired, or other configuration
           of reads for sequencing
         examples:
@@ -1362,7 +1351,7 @@ classes:
         description: The type of read that contains the UMI barcode.
         examples:
         - value: index1
-        slot_uri: ei:cell_barcode_read
+        slot_uri: ontology:cell_barcode_read
         domain: Sequencing
         range: enum
         multivalued: false
@@ -1373,7 +1362,7 @@ classes:
         description: The offset in sequence of the cell identifying barcode.
         examples:
         - value: '10'
-        slot_uri: ei:cell_barcode_offset
+        slot_uri: ontology:cell_barcode_offset
         domain: Sequencing
         range: string
         multivalued: false
@@ -1384,19 +1373,19 @@ classes:
         description: The offset in sequence of the cell identifying barcode.
         examples:
         - value: '0'
-        slot_uri: ei:cell_barcode_size
+        slot_uri: ontology:cell_barcode_size
         domain: Sequencing
         range: string
         multivalued: false
         inlined: false
       cdna_read:
         identifier: false
-        required: false
+        required: true
         description: The actual nucleotide sequence obtained from Complementary DNA
           (cDNA) during sequencing.
         examples:
         - value: read1
-        slot_uri: ei:cdna_read
+        slot_uri: ontology:cdna_read
         domain: Sequencing
         range: enum
         multivalued: false
@@ -1409,7 +1398,7 @@ classes:
           or technical sequences.
         examples:
         - value: '6'
-        slot_uri: ei:cdna_read_offset
+        slot_uri: ontology:cdna_read_offset
         domain: Sequencing
         range: string
         multivalued: false
@@ -1420,7 +1409,7 @@ classes:
         description: The size of the Complementary DNA (cDNA) read.
         examples:
         - value: '75'
-        slot_uri: ei:cdna_read_size
+        slot_uri: ontology:cdna_read_size
         domain: Sequencing
         range: string
         multivalued: false
@@ -1533,7 +1522,7 @@ classes:
           might be excluded if a threshold percentage of reads did not map to the
           genome or if pre-sequencing quality measures were not passed.'
         examples:
-        - value: Passed
+        - value: Pass
         slot_uri: ei:post_analysis_cell_well_quality
         domain: Analysis Derived Data
         range: enum
@@ -1545,7 +1534,7 @@ classes:
         description: Any other cell level measurement or annotation as result of the
           analysis.
         examples:
-        - value: cluster
+        - value: Cluster
         slot_uri: ei:other_derived_cell_attributes
         domain: Analysis Derived Data
         range: enum
@@ -2021,30 +2010,6 @@ classes:
         range: string
         multivalued: false
         inlined: false
-      library_prep_id:
-        identifier: false
-        required: false
-        description: A unique alphanumeric reference or identifier for the library
-          preparation protocol used during the sequencing.
-        examples:
-        - value: libPrep123
-        slot_uri: ei:library_prep_id
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
-      sequencing_id:
-        identifier: false
-        required: false
-        description: A unique alphanumeric reference or identifier for the sequencing
-          protocol.
-        examples:
-        - value: seq123
-        slot_uri: ei:sequencing_id
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
       file_id:
         identifier: true
         required: true
@@ -2056,9 +2021,33 @@ classes:
         range: string
         multivalued: false
         inlined: false
+      library_prep_id:
+        identifier: false
+        required: true
+        description: A unique alphanumeric reference or identifier for the library
+          preparation protocol used during the sequencing.
+        examples:
+        - value: libPrep123
+        slot_uri: ei:library_prep_id
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
+      sequencing_id:
+        identifier: false
+        required: true
+        description: A unique alphanumeric reference or identifier for the sequencing
+          protocol.
+        examples:
+        - value: seq123
+        slot_uri: ei:sequencing_id
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
       read_1_file:
         identifier: false
-        required: false
+        required: true
         description: The name or accession of the file that contains read 1.
         examples:
         - value: file1_r1.fastq.gz
@@ -2080,7 +2069,7 @@ classes:
         inlined: false
       index_1_file:
         identifier: false
-        required: false
+        required: true
         description: The name of the file that contains index 1.
         examples:
         - value: file1_i1.fastq.gz
@@ -2102,7 +2091,7 @@ classes:
         inlined: false
       read_1_file_checksum:
         identifier: false
-        required: false
+        required: true
         description: Result of a hash function calculated on the content of the read
           1 file  to verify file integrity. Commonly used algorithms include MD5 and
           SHA-1. The checksums should be separated by a comma (,).
@@ -2139,41 +2128,6 @@ classes:
         range: file
         multivalued: false
         inlined: false
-      imaging_protocol_id:
-        identifier: false
-        required: true
-        description: A unique alphanumeric identifier for the imaging protocol.
-        examples:
-        - value: img123
-        slot_uri: ei:imaging_protocol_id
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
-      file_name:
-        identifier: false
-        required: true
-        description: A filename or file name is a name used to uniquely identify a
-          data file related to the study.
-        examples:
-        - value: file001
-        slot_uri: ei:file_name
-        domain: File
-        range: file
-        multivalued: false
-        inlined: false
-      file_type:
-        identifier: false
-        required: true
-        description: A file type is a name given to a specific kind of file. Common
-          file types are fastq, gtf, fasta, bam, archive etc.
-        examples:
-        - value: fastq
-        slot_uri: ei:file_type
-        domain: File
-        range: string
-        multivalued: false
-        inlined: false
   Expression Data Process Setting:
     attributes:
       study_id:
@@ -2205,11 +2159,6 @@ classes:
         description: Matrix Type
         examples:
         - value: raw_counts
-        - value: normalised
-        - value: log1p
-        - value: scaled
-        - value: imputed
-        - value: "pseudobulk \u2026"
         slot_uri: ei:matrix_type
         domain: Expression Data Process Setting
         range: enum
@@ -2244,7 +2193,8 @@ classes:
         identifier: false
         required: false
         description: Any normalisation processing performed
-        examples: []
+        examples:
+        - value: Log Normalisation
         slot_uri: ei:normalisation_method
         domain: Expression Data Process Setting
         range: enum
@@ -2266,7 +2216,8 @@ classes:
         identifier: false
         required: false
         description: Method used to reduce dimensionality in the expression data
-        examples: []
+        examples:
+        - value: PCA
         slot_uri: ei:dimensionality_reduction
         domain: Expression Data Process Setting
         range: enum
@@ -2310,13 +2261,7 @@ classes:
         required: false
         description: Metic used to calculate a points distance to others
         examples:
-        - value: Leiden
-        - value: Louvain
-        - value: Phenograph
-        - value: Walktrap
-        - value: Infomap
-        - value: Smart Local Moving
-        - value: Other
+        - value: cosine
         slot_uri: ei:clustering_distance_metric
         domain: Expression Data Process Setting
         range: enum
@@ -2375,6 +2320,17 @@ classes:
         range: string
         multivalued: false
         inlined: false
+      expression_data_file_id:
+        identifier: true
+        required: true
+        description: A unique alphanumeric identifier for the expression data file
+        examples:
+        - value: AB3X2
+        slot_uri: ei:expression_data_file_id
+        domain: Expression Data File
+        range: string
+        multivalued: false
+        inlined: false
       library_prep_id:
         identifier: false
         required: true
@@ -2394,17 +2350,6 @@ classes:
         examples:
         - value: expdataprocess1
         slot_uri: ei:expression_data_setting_id
-        domain: Expression Data File
-        range: string
-        multivalued: false
-        inlined: false
-      expression_data_file_id:
-        identifier: true
-        required: true
-        description: A unique alphanumeric identifier for the expression data file
-        examples:
-        - value: AB3X2
-        slot_uri: ei:expression_data_file_id
         domain: Expression Data File
         range: string
         multivalued: false
@@ -2434,7 +2379,8 @@ classes:
         identifier: false
         required: true
         description: The format of the expression file, such as h5ad or rds
-        examples: []
+        examples:
+        - value: csv
         slot_uri: ei:expression_data_file_format
         domain: Expression Data File
         range: enum
@@ -2478,200 +2424,6 @@ classes:
         - value: '2024-10-14'
         slot_uri: ei:date_generated
         domain: Expression Data File
-        range: string
-        multivalued: false
-        inlined: false
-  Imaging Protocol:
-    attributes:
-      study_id:
-        identifier: false
-        required: true
-        description: A unique alphanumeric identifier for this study
-        examples:
-        - value: A7F9B3X2
-        slot_uri: ei:study_id
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      imaging_protocol_id:
-        identifier: true
-        required: true
-        description: A unique alphanumeric identifier for the imaging protocol.
-        examples:
-        - value: img123
-        slot_uri: ei:imaging_protocol_id
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      platform:
-        identifier: false
-        required: true
-        description: The platform used to isolate the cells.
-        examples:
-        - value: Illumina NovaSeq
-        slot_uri: ei:platform
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      instrument:
-        identifier: false
-        required: true
-        description: The instrument used to isolate the cells.
-        examples:
-        - value: Illumina NovaSeq 6000
-        slot_uri: ei:instrument
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      target_probe_code:
-        identifier: false
-        required: true
-        description: The type of probes used to detect and quantify specific RNA molecules
-          in their native spatial context within a tissue or cell.
-        examples:
-        - value: Oligo-dT
-        slot_uri: ei:target_probe_code
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      section_thickness_%C2%B5m:
-        identifier: false
-        required: false
-        description: The thickness of the tissue section in micrometres.
-        examples:
-        - value: '10'
-        slot_uri: ei:section_thickness_%C2%B5m
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      section_thickness_measurement_method:
-        identifier: false
-        required: false
-        description: The method used to measure tissue section thickness.
-        examples:
-        - value: Microtome
-        slot_uri: ei:section_thickness_measurement_method
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      section_thickness_temperature:
-        identifier: false
-        required: false
-        description: The temperature at which the section was made in degree celsius.
-        examples:
-        - value: '22'
-        slot_uri: ei:section_thickness_temperature
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      is_pathological:
-        identifier: false
-        required: false
-        description: A quality inhering in a bearer by virtue of the bearer's being
-          abnormal and having a destructive effect on living tissue.
-        examples:
-        - value: 'No'
-        slot_uri: ei:is_pathological
-        domain: Imaging Protocol
-        range: enum
-        multivalued: false
-        inlined: false
-      photobleaching_duration_in_hours:
-        identifier: false
-        required: false
-        description: The duration of photobleaching in hours
-        examples:
-        - value: '2'
-        slot_uri: ei:photobleaching_duration_in_hours
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      clearing_with_proteinasek:
-        identifier: false
-        required: true
-        description: "The duration of clearing at 47\xB0C with Proteinase K."
-        examples:
-        - value: 24 hrs
-        slot_uri: ei:clearing_with_proteinasek
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      clearing_without_proteinasek:
-        identifier: false
-        required: true
-        description: "The duration of tissue clearing at 37\xB0C without Proteinase\
-          \ K."
-        examples:
-        - value: 4.5 days
-        slot_uri: ei:clearing_without_proteinasek
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      instrument_user_guide:
-        identifier: false
-        required: true
-        description: The user guide for the instrument used.
-        examples:
-        - value: User Guide
-        slot_uri: ei:instrument_user_guide
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      instrument_user_guide_revision:
-        identifier: false
-        required: true
-        description: The revision of the instrument user guide.
-        examples:
-        - value: '1.2'
-        slot_uri: ei:instrument_user_guide_revision
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      sample_preparation_guide:
-        identifier: false
-        required: true
-        description: The guide used for sample preparation.
-        examples:
-        - value: preparation_guide_v1.0.pdf
-        slot_uri: ei:sample_preparation_guide
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      sample_preparation_guide_revision:
-        identifier: false
-        required: true
-        description: The revision of the sample preparation guide.
-        examples:
-        - value: '1.0'
-        slot_uri: ei:sample_preparation_guide_revision
-        domain: Imaging Protocol
-        range: string
-        multivalued: false
-        inlined: false
-      deviations_from_official_protocol:
-        identifier: false
-        required: true
-        description: Any deviations from the official protocol. Separate individual
-          deviations with '|'.
-        examples:
-        - value: "Temperature exceeded 25\xB0C during storage | Sample handling delayed\
-            \ by 2 hours"
-        slot_uri: ei:deviations_from_official_protocol
-        domain: Imaging Protocol
         range: string
         multivalued: false
         inlined: false
@@ -3026,7 +2778,3 @@ enums:
       Mechanical dissociation: {}
       Mesh passage: {}
       Proteolysis: {}
-  Is_pathological:
-    permissible_values:
-      'No': {}
-      'Yes': {}
