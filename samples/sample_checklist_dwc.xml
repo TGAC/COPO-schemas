@@ -427,7 +427,7 @@
                             <REGEX_VALUE>^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$</REGEX_VALUE>
                         </TEXT_FIELD>
                     </FIELD_TYPE>
-                    <MANDATORY>optional</MANDATORY>
+                    <MANDATORY>mandatory</MANDATORY>
                     <MULTIPLICITY>single</MULTIPLICITY>
                 </FIELD>
                 <FIELD>
