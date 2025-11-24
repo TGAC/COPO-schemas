@@ -16,6 +16,7 @@ These schemas define metadata structures and checklists relevant to various omic
 ## Schema Usage 🧩
 
 These schemas are used internally by the COPO platform to:
+
 - Drive user-facing metadata manifests
 - Validate user-submitted metadata
 - Inform data submission to external repositories (e.g. [European Nucleotide Archive (ENA)](https://www.ebi.ac.uk/ena/browser/home), [Zenodo](https://zenodo.org) and [BioImage Archive (BIA)](https://www.ebi.ac.uk/bioimage-archive))
@@ -25,6 +26,7 @@ They are not intended for direct use by external tools but may serve as referenc
 ## Checklist Types 📌
 
 Each schema aligns with a **checklist** or **metadata category**, such as:
+
 - Single-cell submissions
 - Spatial ranscriptomic datasets
 - Sample metadata
@@ -35,6 +37,7 @@ Each schema aligns with a **checklist** or **metadata category**, such as:
 Checklists are sometimes referred to interchangeably as manifests. A manifest is essentially a spreadsheet (e.g., CSV or XLSX) that can be filled in with metadata relevant to a particular data type or submission workflow.
 
 ## Structure 🛠
+
 The repository is structured as follows:
 
 ```
@@ -51,11 +54,12 @@ COPO-schemas/
 ├── LICENSE
 └── README.md
 ```
+
 > All schemas follow a versioning convention (e.g. v0.1, v1, v2, etc.) to track changes over time. Refer to the file names for the most recent version.
 
 ## Development & Contribution 🧪
 
-This repository is currently managed by the COPO project team. Contributions or suggestions may be considered via [pull request](https://github.com/TGAC/COPO-schemas/pulls) or [GitHub issues](https://github.com/TGAC/COPO-schemas/issues), especially regarding schema corrections or updates based on evolving standards.
+This repository is currently managed by the COPO project team. Contributions or suggestions may be considered via [pull request](https://github.com/EarlhamInst/COPO-schemas/pulls) or [GitHub issues](https://github.com/EarlhamInst/COPO-schemas/issues), especially regarding schema corrections or updates based on evolving standards.
 
 ## License 📄
 
@@ -74,8 +78,8 @@ Unless otherwise stated, all schema files are released under the [MIT License](L
 
 Here are other COPO-related repositories you may find useful:
 
-- [COPO project repository](https://github.com/TGAC/COPO-production)
-- [SingleCellSchemas repository](https://github.com/TGAC/SingleCellSchemas)
+- [COPO project repository](https://github.com/EarlhamInst/COPO-production)
+- [SingleCellSchemas repository](https://github.com/EarlhamInst/SingleCellSchemas)
 
 ---
 
