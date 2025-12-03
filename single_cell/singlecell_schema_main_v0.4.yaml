@@ -28,7 +28,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for this study
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:study_id
         domain: Study
         range: string
@@ -233,7 +233,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for this study
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:study_id
         domain: Person
         range: string
@@ -330,7 +330,7 @@ classes:
         description: A unique alphanumeric identifier for the  study if referring
           to
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:study_id
         domain: Sample
         range: string
@@ -344,7 +344,7 @@ classes:
           within and across datasets. It can be a name, code, or accession-like format,
           as long as it remains unique.
         examples:
-        - value: sample123
+        - value: SAMPLE001
         slot_uri: ei:sample_id
         domain: Sample
         range: string
@@ -399,7 +399,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for this study
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:study_id
         domain: Dissociation
         range: string
@@ -411,7 +411,7 @@ classes:
         description: A unique alphanumeric code for the dissociation protocol in the
           study
         examples:
-        - value: disProtocol123
+        - value: DISSOC001
         slot_uri: ei:dissociation_protocol_id
         domain: Dissociation
         range: string
@@ -539,7 +539,7 @@ classes:
         required: true
         description: Provide a cell type from the CL ontology.
         examples:
-        - value: blastocyst
+        - value: malignant cell
         slot_uri: faang:cell_type
         domain: Dissociation
         range: ontology
@@ -578,7 +578,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for this study
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:study_id
         domain: Cell Suspension
         range: string
@@ -589,7 +589,7 @@ classes:
         required: true
         description: A unique alphanumeric code for the cell suspension for the sample
         examples:
-        - value: cellSusp123
+        - value: CELLSUSP001
         slot_uri: ei:cell_suspension_id
         domain: Cell Suspension
         range: string
@@ -603,7 +603,7 @@ classes:
           unambiguous way to identify the sample within and across datasets. It can
           be a name, code, or accession-like format, as long as it remains unique.
         examples:
-        - value: sample123
+        - value: SAMPLE001
         slot_uri: ei:sample_id
         domain: Cell Suspension
         range: string
@@ -615,7 +615,7 @@ classes:
         description: A unique alphanumeric code for the dissociation protocol in the
           study
         examples:
-        - value: disProtocol123
+        - value: DISSOC001
         slot_uri: ei:dissociation_protocol_id
         domain: Cell Suspension
         range: string
@@ -779,7 +779,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for this study
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:study_id
         domain: Library Preparation
         range: string
@@ -791,7 +791,7 @@ classes:
         description: A unique alphanumeric reference or identifier for the library
           preparation protocol used during the sequencing.
         examples:
-        - value: libPrep123
+        - value: LIBPREP001
         slot_uri: ei:library_prep_id
         domain: Library Preparation
         range: string
@@ -803,7 +803,7 @@ classes:
         description: A unique alphanumeric code for the cell suspension for the library
           preparation.
         examples:
-        - value: cellSusp123
+        - value: CELLSUSP001
         slot_uri: ei:cell_suspension_id
         domain: Library Preparation
         range: string
@@ -1041,7 +1041,7 @@ classes:
         required: false
         description: Identifier for the 96-well plate used in sample preparation.
         examples:
-        - value: plate123
+        - value: PLT001
         slot_uri: ei:plate_id
         domain: Library Preparation
         range: string
@@ -1233,7 +1233,7 @@ classes:
         required: true
         description: Date at which the pool was created.
         examples:
-        - value: YYYY-MM-DD
+        - value: '2025-10-24'
         slot_uri: faang:pool_creation_date
         domain: Library Preparation
         range: string
@@ -1256,7 +1256,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for this study
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:study_id
         domain: Sequencing
         range: string
@@ -1268,7 +1268,7 @@ classes:
         description: A unique alphanumeric reference or identifier for the sequencing
           protocol.
         examples:
-        - value: seq123
+        - value: SEQ001
         slot_uri: ontology:sequencing_id
         domain: Sequencing
         range: string
@@ -1483,7 +1483,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for this study
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:study_id
         domain: Analysis Derived Data
         range: string
@@ -1547,7 +1547,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for this study
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:study_id
         domain: Raw Data Processing
         range: string
@@ -1841,7 +1841,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for this study
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:study_id
         domain: Downstream Processing
         range: string
@@ -2004,7 +2004,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for this study
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:study_id
         domain: File
         range: string
@@ -2015,8 +2015,22 @@ classes:
         required: true
         description: A unique alphanumeric identifier for this file
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:file_id
+        domain: File
+        range: string
+        multivalued: false
+        inlined: false
+      sample_id:
+        identifier: false
+        required: true
+        description: A unique alphanumeric reference or identifier for the sample
+          associated with the cell suspension. This field must provide a consistent,
+          unambiguous way to identify the sample within and across datasets. It can
+          be a name, code, or accession-like format, as long as it remains unique.
+        examples:
+        - value: SAMPLE001
+        slot_uri: ei:sample_id
         domain: File
         range: string
         multivalued: false
@@ -2027,7 +2041,7 @@ classes:
         description: A unique alphanumeric reference or identifier for the library
           preparation protocol used during the sequencing.
         examples:
-        - value: libPrep123
+        - value: LIBPREP001
         slot_uri: ei:library_prep_id
         domain: File
         range: string
@@ -2039,7 +2053,7 @@ classes:
         description: A unique alphanumeric reference or identifier for the sequencing
           protocol.
         examples:
-        - value: seq123
+        - value: SEQ001
         slot_uri: ei:sequencing_id
         domain: File
         range: string
@@ -2069,7 +2083,7 @@ classes:
         inlined: false
       index_1_file:
         identifier: false
-        required: true
+        required: false
         description: The name of the file that contains index 1.
         examples:
         - value: file1_i1.fastq.gz
@@ -2096,7 +2110,7 @@ classes:
           1 file  to verify file integrity. Commonly used algorithms include MD5 and
           SHA-1. The checksums should be separated by a comma (,).
         examples:
-        - value: 32-char hex
+        - value: f8d29e41a73b5c02de9a6fb314e7c8ad
         slot_uri: ei:read_1_file_checksum
         domain: File
         range: string
@@ -2109,7 +2123,7 @@ classes:
           2 file  to verify file integrity. Commonly used algorithms include MD5 and
           SHA-1. The checksums should be separated by a comma (,).
         examples:
-        - value: 32-char hex
+        - value: a3f4c1b29d8e57fa41b02de6c7f9ab83
         slot_uri: ei:read_2_file_checksum
         domain: File
         range: string
@@ -2135,7 +2149,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for this study
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:study_id
         domain: Expression Data Process Setting
         range: string
@@ -2147,7 +2161,7 @@ classes:
         description: A unique alphanumeric identifier for the expression data process
           setting
         examples:
-        - value: expdataprocess1
+        - value: EXPSET001
         slot_uri: ei:expression_data_process_setting_id
         domain: Expression Data Process Setting
         range: string
@@ -2169,9 +2183,7 @@ classes:
         required: true
         description: The associated reference genome
         examples:
-        - value: the download link for GRCh38.p13
-        - value: GRCm39
-        - value: "TAIR10 \u2026"
+        - value: https://reference-genome-example.com
         slot_uri: ei:reference_genome
         domain: Expression Data Process Setting
         range: string
@@ -2182,8 +2194,7 @@ classes:
         required: false
         description: The annotation version of the associated reference genome
         examples:
-        - value: Ensembl 110
-        - value: "GENCODE v44 \u2026"
+        - value: GENCODE v44
         slot_uri: ei:annotation_version
         domain: Expression Data Process Setting
         range: string
@@ -2194,7 +2205,7 @@ classes:
         required: false
         description: Any normalisation processing performed
         examples:
-        - value: Log Normalisation
+        - value: Log normalisation
         slot_uri: ei:normalisation_method
         domain: Expression Data Process Setting
         range: enum
@@ -2206,7 +2217,7 @@ classes:
         description: Number of Highly Variable Genes
         examples:
         - value: seurat_v3
-        - value: n=2000 (or none)
+        - value: n=2000
         slot_uri: ei:highly_variable_gene_selection
         domain: Expression Data Process Setting
         range: string
@@ -2229,7 +2240,6 @@ classes:
         description: Number of nearest neighbours used to calculate cluster membership
         examples:
         - value: pca:50
-        - value: "mnn:30 \u2026"
         slot_uri: ei:n_neighbours
         domain: Expression Data Process Setting
         range: string
@@ -2250,7 +2260,7 @@ classes:
         required: false
         description: Resolution parameter
         examples:
-        - value: Numeric (1.0) or NA
+        - value: '2.5'
         slot_uri: ei:clustering_resolution
         domain: Expression Data Process Setting
         range: string
@@ -2314,7 +2324,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for this study
         examples:
-        - value: A7F9B3X2
+        - value: STUDY001
         slot_uri: ei:study_id
         domain: Expression Data File
         range: string
@@ -2325,7 +2335,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for the expression data file
         examples:
-        - value: AB3X2
+        - value: EXPFILE001
         slot_uri: ei:expression_data_file_id
         domain: Expression Data File
         range: string
@@ -2336,7 +2346,7 @@ classes:
         required: true
         description: A unique alphanumeric identifier for library preparation
         examples:
-        - value: libPrep123
+        - value: LIBPREP001
         slot_uri: ei:library_prep_id
         domain: Expression Data File
         range: string
@@ -2348,7 +2358,7 @@ classes:
         description: A unique alphanumeric identifier for the expression data process
           setting
         examples:
-        - value: expdataprocess1
+        - value: EXPSET001
         slot_uri: ei:expression_data_setting_id
         domain: Expression Data File
         range: string
@@ -2358,7 +2368,8 @@ classes:
         identifier: false
         required: true
         description: Expression data file name
-        examples: []
+        examples:
+        - value: exp_file.csv
         slot_uri: ei:expression_data_file
         domain: Expression Data File
         range: file
@@ -2369,7 +2380,7 @@ classes:
         required: true
         description: calculated md5 checksum for this file
         examples:
-        - value: 32-char hex
+        - value: 9e4b7a23f6c1d0ab85f29c47e3d8a610
         slot_uri: ei:expression_data_file_checksum
         domain: Expression Data File
         range: string
@@ -2390,7 +2401,8 @@ classes:
         identifier: false
         required: false
         description: The number of cells represented in the expression data
-        examples: []
+        examples:
+        - value: '4'
         slot_uri: ei:n_cells
         domain: Expression Data File
         range: string
@@ -2400,7 +2412,8 @@ classes:
         identifier: false
         required: false
         description: The number of genese represented in the expression data
-        examples: []
+        examples:
+        - value: '50'
         slot_uri: ei:n_genes
         domain: Expression Data File
         range: string
@@ -2410,7 +2423,8 @@ classes:
         identifier: false
         required: false
         description: Size of the file recorded in bytes
-        examples: []
+        examples:
+        - value: '90'
         slot_uri: ei:file_size_bytes
         domain: Expression Data File
         range: string
